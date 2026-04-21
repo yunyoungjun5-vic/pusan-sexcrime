@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Poppins:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", "Poppins", sans-serif;
+  
+  --color-bg-soft: #F5F5F5;
+  --color-primary-deep: #0D47A1;
+  --color-cta-deep: #D84315;
+  --color-footer-bg: #424242;
+
+  /* Remote Program Page Colors */
+  --color-remote-primary: #0f3f3a;
+  --color-remote-sub: #145c54;
+  --color-remote-mint: #1fc7b6;
+  --color-remote-mint-hover: #2dd4bf;
+  --color-remote-bg-light: #f8fafc;
+}
+
+@layer utilities {
+  .text-shadow-premium {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-soft text-slate-800 font-sans antialiased;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-slate-900;
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Custom Button Styles */
+.btn-primary {
+  @apply bg-primary-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-[#0a3d8a];
+}
+
+.btn-cta {
+  @apply bg-cta-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-[#bf360c];
+}
+
+.section-padding {
+  @apply py-20 md:py-32;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
