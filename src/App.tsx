@@ -62,8 +62,8 @@ interface NavItem {
 }
 
 // --- Constants & Data ---
-const NAVER_PLACE_URL = "https://map.naver.com/p/entry/place/2033439050?placePath=/home?fromPanelNum=1&additionalHeight=76&timestamp=202603231547&locale=ko&svcName=map_pcv5&fromPanelNum=1&additionalHeight=76&timestamp=202603231041&locale=ko&svcName=map_pcv5&from=map&searchType=place&lng=128.5268783&lat=35.8601957&c=20.00,0,0,2,dh";
-const CONTACT_PHONE = "0507-1394-1340";
+const NAVER_PLACE_URL = "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%84%B1%EB%B2%94%EC%A3%84%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4/place/2050622926?searchType=place&lng=128.9705167&lat=35.1246838&placePath=/booking?bookingRedirectUrl=https://m.booking.naver.com/booking/13/bizes/1643592?theme=place&entry=pll&lang=ko&service-target=map-pc&pcmap=1&area=pll&c=15.00,0,0,0,dh";
+const CONTACT_PHONE = "0507-1380-0028";
 
 const NAV_STRUCTURE: NavItem[] = [
   {
@@ -641,7 +641,7 @@ const HomeExperts = () => (
             role: "변호사 / 성범죄 전문", 
             tags: ["사법시험 54회", "성범죄 전문"],
             desc: "사법시험 54회 합격 및 사법연수원(44기)을 수료한 법률 전문가입니다. 부산지방법원 조정위원, 부산지방검찰청 형사조정위원, 부산지방법원 법인파산관재인, 대한법률구조공단 부산지부 구조위원 등을 역임하며 대한변호사협회에 등록된 성범죄 전문 변호사로 활동하고 있습니다.",
-            image: "https://www.soullaw.co.kr/images/sub/member/member_view23.jpg" 
+            image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774346463/member_view23_nnxzhn.jpg" 
           }
         ].map((expert, idx) => (
           <motion.div 
@@ -5992,7 +5992,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
               { 
                 name: "허선무 변호사", 
                 role: "사법시험 54회 / 성범죄 전문 변호사", 
-                image: "https://www.soullaw.co.kr/images/sub/member/member_view23.jpg",
+                image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774346463/member_view23_nnxzhn.jpg",
                 desc: "부산지방법원 조정위원 및 형사조정위원 역임, 성범죄 전문 법률 조력자."
               }
             ].map((expert, idx) => (

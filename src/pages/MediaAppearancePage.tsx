@@ -1395,11 +1395,11 @@ const MediaAppearancePage = () => {
           <h2 className="text-3xl md:text-4xl font-black mb-4 font-display">전문 강연 및 방송 출연이 필요하신가요?</h2>
           <p className="text-lg text-slate-400 mb-10">공공기관, 기업, 교육기관을 위한 심리교육 및 특강을 진행하고 있습니다.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="tel:0507-1394-1340" className="btn-primary flex items-center justify-center gap-2">
+            <a href="tel:0507-1380-0028" className="btn-primary flex items-center justify-center gap-2">
               <PhoneCall className="w-5 h-5" />
-              문의하기 0507-1394-1340
+              문의하기 0507-1380-0028
             </a>
-            <a href="https://map.naver.com/p/entry/place/2033439050?placePath=/home?fromPanelNum=1&additionalHeight=76&timestamp=202603231547&locale=ko&svcName=map_pcv5&fromPanelNum=1&additionalHeight=76&timestamp=202603231041&locale=ko&svcName=map_pcv5&from=map&searchType=place&lng=128.5268783&lat=35.8601957&c=20.00,0,0,2,dh" target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-slate-900 hover:bg-slate-100 flex items-center justify-center gap-2">
+            <a href="https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%84%B1%EB%B2%94%EC%A3%84%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4/place/2050622926?searchType=place&lng=128.9705167&lat=35.1246838&placePath=/booking?bookingRedirectUrl=https://m.booking.naver.com/booking/13/bizes/1643592?theme=place&entry=pll&lang=ko&service-target=map-pc&pcmap=1&area=pll&c=15.00,0,0,0,dh" target="_blank" rel="noopener noreferrer" className="btn-primary bg-white text-slate-900 hover:bg-slate-100 flex items-center justify-center gap-2">
               <MessageSquare className="w-5 h-5" />
               상담 신청
             </a>

@@ -72,15 +72,15 @@ const RemoteProgramPage = () => {
                 "상담확인서 · 교육이수확인서 발급",
                 "법원 제출 상담의견서 가능"
               ].map((text, i) => (
-                <div key={i} className="flex items-center gap-2 px-4 sm:px-6 py-3 rounded-2xl bg-white/12 backdrop-blur-md border border-white/20 text-white break-keep w-full sm:w-auto justify-center sm:justify-start shadow-sm">
-                  <CheckCircle2 className="w-5 h-5 text-remote-mint shrink-0" />
-                  <span className="font-bold text-sm sm:text-base">{text}</span>
+                <div key={i} className="flex items-center gap-2 px-4 sm:px-6 py-3 rounded-2xl bg-white/40 backdrop-blur-md border border-white/50 text-white break-keep w-full sm:w-auto justify-center sm:justify-start shadow-md">
+                  <CheckCircle2 className="w-5 h-5 text-remote-mint shrink-0 drop-shadow-sm" />
+                  <span className="font-bold text-sm sm:text-base drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">{text}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 w-full px-4 sm:px-0">
-              <a href="tel:0507-1394-1340" className="w-full sm:w-auto px-10 py-5 bg-remote-mint hover:bg-remote-mint-hover text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(31,199,182,0.3)] flex items-center justify-center gap-2 break-keep">
+              <a href="https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%84%B1%EB%B2%94%EC%A3%84%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4/place/2050622926?searchType=place&lng=128.9705167&lat=35.1246838&placePath=/booking?bookingRedirectUrl=https://m.booking.naver.com/booking/13/bizes/1643592?theme=place&entry=pll&lang=ko&service-target=map-pc&pcmap=1&area=pll&c=15.00,0,0,0,dh" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 bg-remote-mint hover:bg-remote-mint-hover text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(31,199,182,0.3)] flex items-center justify-center gap-2 break-keep">
                 실시간 상담 예약하기
                 <ArrowRight className="w-5 h-5 shrink-0" />
               </a>
@@ -110,11 +110,11 @@ const RemoteProgramPage = () => {
                   <div className="absolute inset-0 bg-slate-900/40"></div>
                 </div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="bg-white/12 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/20">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 flex items-center gap-2 break-keep">
-                      <span className="text-red-400 shrink-0">✕</span> 일반적인 온라인 교육
+                  <div className="bg-white/40 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/50 shadow-md">
+                    <h3 className="text-lg sm:text-xl font-black text-white mb-2 flex items-center gap-2 break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+                      <span className="text-red-400 shrink-0 drop-shadow-sm">✕</span> 일반적인 온라인 교육
                     </h3>
-                    <p className="text-white/90 text-sm break-keep leading-[1.7]">녹화된 영상을 수동적으로 시청하며, 개인의 특성과 사건의 맥락이 전혀 고려되지 않습니다.</p>
+                    <p className="text-white text-sm break-keep leading-[1.7] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] font-bold">녹화된 영상을 수동적으로 시청하며, 개인의 특성과 사건의 맥락이 전혀 고려되지 않습니다.</p>
                   </div>
                 </div>
               </div>
@@ -130,11 +130,11 @@ const RemoteProgramPage = () => {
                   <div className="absolute inset-0 bg-remote-primary/30"></div>
                 </div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="bg-white/15 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/30 shadow-lg group-hover:bg-white/20 transition-colors">
-                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 flex items-center gap-2 break-keep">
-                      <span className="text-remote-mint shrink-0">✓</span> 1:1 원격 심리개입
+                  <div className="bg-white/50 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/60 shadow-xl group-hover:bg-white/60 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-black text-white mb-2 flex items-center gap-2 break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+                      <span className="text-remote-mint shrink-0 drop-shadow-sm">✓</span> 1:1 원격 심리개입
                     </h3>
-                    <p className="text-white text-sm break-keep leading-[1.7]">전문가와 실시간으로 소통하며, 사건의 원인을 분석하고 맞춤형 재범방지 전략을 수립합니다.</p>
+                    <p className="text-white text-sm break-keep leading-[1.7] drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] font-bold">전문가와 실시간으로 소통하며, 사건의 원인을 분석하고 맞춤형 재범방지 전략을 수립합니다.</p>
                   </div>
                 </div>
               </div>
@@ -180,23 +180,23 @@ const RemoteProgramPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/12 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-lg">
-              <div className="aspect-video rounded-2xl overflow-hidden mb-6">
+            <div className="bg-white/40 backdrop-blur-xl p-8 rounded-3xl border border-white/50 shadow-xl">
+              <div className="aspect-video rounded-2xl overflow-hidden mb-6 drop-shadow-lg ring-1 ring-white/50">
                 <img src="https://res.cloudinary.com/dxjz9ksjg/image/upload/v1775717095/ChatGPT_Image_2026%EB%85%84_4%EC%9B%94_9%EC%9D%BC_%EC%98%A4%ED%9B%84_03_44_17_v2lpjv.png" alt="대면 상담" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center break-keep">대면 상담</h3>
-              <p className="text-white/80 text-center text-sm break-keep">직접 방문하여 진행되는 심층 상담</p>
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 text-center break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">대면 상담</h3>
+              <p className="text-white text-center text-sm break-keep drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] font-bold">직접 방문하여 진행되는 심층 상담</p>
             </div>
             
-            <div className="bg-remote-sub/40 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-remote-mint/30 ring-1 ring-remote-mint/20 shadow-[0_0_30px_rgba(31,199,182,0.15)]">
-              <div className="aspect-video rounded-2xl overflow-hidden mb-6 relative">
+            <div className="bg-teal-500/60 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-teal-300/60 ring-2 ring-teal-300/40 shadow-[0_0_40px_rgba(31,199,182,0.4)]">
+              <div className="aspect-video rounded-2xl overflow-hidden mb-6 relative drop-shadow-lg ring-1 ring-white/30">
                 <img src="https://res.cloudinary.com/dxjz9ksjg/image/upload/v1775717095/ChatGPT_Image_2026%EB%85%84_4%EC%9B%94_9%EC%9D%BC_%EC%98%A4%ED%9B%84_03_44_30_wbvxha.png" alt="화상 상담" className="w-full h-full object-cover" />
-                <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded animate-pulse">
+                <div className="absolute top-4 right-4 bg-red-500 text-white text-xs font-black px-2 py-1 rounded animate-pulse shadow-md">
                   REC
                 </div>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-remote-mint mb-2 text-center break-keep">실시간 화상 상담</h3>
-              <p className="text-white/90 text-center text-sm break-keep">어디서든 접속 가능한 1:1 심층 개입</p>
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 text-center break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">실시간 화상 상담</h3>
+              <p className="text-white text-center text-sm break-keep drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] font-bold">어디서든 접속 가능한 1:1 심층 개입</p>
             </div>
           </div>
         </div>
@@ -264,7 +264,7 @@ const RemoteProgramPage = () => {
                 icon: Eye, 
                 title: "성인지 왜곡 교정", 
                 desc: "타인과 성적 권리에 대한 잘못된 신념과 인지적 오류를 찾아내고 교정합니다.",
-                img: "https://images.unsplash.com/photo-1517443198016-5b7227189191?auto=format&fit=crop&q=80&w=800"
+                img: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&q=80&w=800"
               },
               { 
                 icon: Repeat, 
@@ -285,15 +285,15 @@ const RemoteProgramPage = () => {
                 img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800"
               }
             ].map((item, i) => (
-              <div key={i} className="relative rounded-3xl overflow-hidden group h-[320px] shadow-lg">
-                <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75" />
-                <div className="absolute inset-0 bg-gradient-to-t from-remote-primary via-remote-primary/60 to-transparent"></div>
+              <div key={i} className="relative rounded-3xl overflow-hidden group h-[320px] shadow-xl ring-1 ring-white/20">
+                <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#31a393]/95 via-[#31a393]/70 to-transparent"></div>
                 <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  <div className="w-12 h-12 bg-white/15 backdrop-blur-md rounded-xl flex items-center justify-center text-remote-mint mb-4 border border-white/20">
-                    <item.icon className="w-6 h-6" />
+                  <div className="w-12 h-12 bg-white/40 backdrop-blur-md rounded-xl flex items-center justify-center text-white mb-4 border border-white/50 shadow-md">
+                    <item.icon className="w-6 h-6 drop-shadow-md" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 break-keep">{item.title}</h3>
-                  <p className="text-white/90 text-sm leading-[1.7] break-keep">{item.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-black text-white mb-2 break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{item.title}</h3>
+                  <p className="text-white text-sm leading-[1.7] break-keep drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] font-bold">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -313,11 +313,11 @@ const RemoteProgramPage = () => {
         </div>
 
         <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto bg-remote-primary/90 backdrop-blur-xl p-6 sm:p-8 md:p-12 rounded-[32px] md:rounded-[40px] border border-remote-mint/30 shadow-2xl">
+          <div className="max-w-4xl mx-auto bg-[#36b3a1]/90 backdrop-blur-xl p-6 sm:p-8 md:p-12 rounded-[32px] md:rounded-[40px] border border-white/40 shadow-2xl drop-shadow-2xl">
             <div className="text-center mb-10 px-2">
-              <Scale className="w-10 h-10 sm:w-12 sm:h-12 text-remote-mint mx-auto mb-4" />
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-4 font-display break-keep text-shadow-premium">법원·검찰 제출용 서류 발급</h2>
-              <p className="text-white/90 text-base sm:text-lg break-keep leading-[1.7]">비대면 프로그램 이수 시에도 대면 상담과 동일한 효력의 서류가 발급됩니다.</p>
+              <Scale className="w-10 h-10 sm:w-12 sm:h-12 text-white mx-auto mb-4 drop-shadow-md" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-4 font-display break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">법원·검찰 제출용 서류 발급</h2>
+              <p className="text-white text-base sm:text-lg break-keep leading-[1.7] drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-bold">비대면 프로그램 이수 시에도 대면 상담과 동일한 효력의 서류가 발급됩니다.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -326,10 +326,10 @@ const RemoteProgramPage = () => {
                 { title: "교육이수확인서", desc: "재범방지 교육 과정 수료 증명" },
                 { title: "상담의견서", desc: "전문가의 심층 평가 및 교정 경과 소견" }
               ].map((item, i) => (
-                <div key={i} className="bg-white/12 p-5 sm:p-6 rounded-2xl border border-white/15 text-center hover:bg-white/18 transition-colors">
-                  <FileText className="w-8 h-8 text-remote-mint mx-auto mb-4 shrink-0" />
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 break-keep">{item.title}</h3>
-                  <p className="text-white/90 text-sm break-keep leading-[1.7]">{item.desc}</p>
+                <div key={i} className="bg-white/40 p-5 sm:p-6 rounded-2xl border border-white/50 text-center hover:bg-white/50 transition-colors shadow-md">
+                  <FileText className="w-8 h-8 text-white drop-shadow-md mx-auto mb-4 shrink-0" />
+                  <h3 className="text-lg sm:text-xl font-black text-white mb-2 break-keep drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">{item.title}</h3>
+                  <p className="text-white text-sm break-keep leading-[1.7] drop-shadow-[0_1px_3px_rgba(0,0,0,0.6)] font-bold">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -408,11 +408,11 @@ const RemoteProgramPage = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 w-full">
-            <a href="tel:0507-1394-1340" className="w-full sm:w-auto px-10 py-5 bg-remote-mint hover:bg-remote-mint-hover text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(31,199,182,0.3)] flex items-center justify-center gap-2 break-keep">
+            <a href="https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%84%B1%EB%B2%94%EC%A3%84%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4/place/2050622926?searchType=place&lng=128.9705167&lat=35.1246838&placePath=/booking?bookingRedirectUrl=https://m.booking.naver.com/booking/13/bizes/1643592?theme=place&entry=pll&lang=ko&service-target=map-pc&pcmap=1&area=pll&c=15.00,0,0,0,dh" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 bg-remote-mint hover:bg-remote-mint-hover text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 shadow-[0_10px_30px_rgba(31,199,182,0.3)] flex items-center justify-center gap-2 break-keep">
               실시간 상담 예약하기
               <ArrowRight className="w-5 h-5 shrink-0" />
             </a>
-            <a href="tel:0507-1394-1340" className="w-full sm:w-auto px-10 py-5 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 break-keep">
+            <a href="tel:0507-1380-0028" className="w-full sm:w-auto px-10 py-5 bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 text-white rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 break-keep">
               <MessageSquare className="w-5 h-5 shrink-0" />
               상담 문의하기
             </a>
