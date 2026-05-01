@@ -1484,10 +1484,10 @@ const StatutoryRapeCaseContent = () => (
             <img 
               src="https://picsum.photos/seed/regret/800/600" 
               alt="Contemplating Man" 
-              className="w-full h-full object-cover blur-[2px] grayscale-[0.3] transition-all duration-700 group-hover:blur-0 group-hover:grayscale-0"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-all duration-700" />
+            <div className="absolute inset-0 bg-slate-900/5 group-hover:bg-transparent transition-all duration-700" />
           </div>
           <div className="absolute -bottom-10 -left-10 p-10 bg-white rounded-[40px] shadow-2xl border border-slate-100 max-w-sm z-10">
             <p className="text-slate-900 text-lg font-black italic leading-relaxed font-display">
@@ -1507,10 +1507,10 @@ const StatutoryRapeCaseContent = () => (
             <img 
               src="https://picsum.photos/seed/confusion/800/800" 
               alt="Confusion" 
-              className="w-full h-full object-cover blur-[3px] brightness-75 transition-all duration-700 group-hover:blur-0 group-hover:brightness-100"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
           </div>
         </div>
         <div className="order-1 lg:order-2 space-y-12">
@@ -1619,10 +1619,10 @@ const StatutoryRapeCaseContent = () => (
             <img 
               src="https://picsum.photos/seed/prison/600/800" 
               alt="Legal Consequences" 
-              className="w-full h-full object-cover blur-[4px] brightness-50 transition-all duration-700 group-hover:blur-0 group-hover:brightness-90"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-rose-900/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-900/20 to-transparent" />
             <div className="absolute inset-0 flex items-center justify-center p-12">
               <p className="text-3xl font-black text-white text-center leading-tight font-display drop-shadow-lg">
                 단순한 벌금으로<br />끝나지 않습니다.<br />
@@ -1685,10 +1685,10 @@ const StatutoryRapeCaseContent = () => (
                 <img 
                   src={`https://picsum.photos/seed/${item.seed}/400/600`} 
                   alt={item.title} 
-                  className="w-full h-full object-cover blur-[2px] brightness-[0.4] group-hover:blur-0 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
               </div>
               <div className="relative h-full p-8 flex flex-col justify-end">
                 <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md text-white flex items-center justify-center mb-6">
@@ -1771,10 +1771,10 @@ const StatutoryRapeCaseContent = () => (
             <img 
               src="https://picsum.photos/seed/secret/800/450" 
               alt="Confidentiality" 
-              className="w-full h-full object-cover blur-[5px] brightness-50 transition-all duration-700 group-hover:blur-0 group-hover:brightness-100"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-slate-900/30" />
+            <div className="absolute inset-0 bg-slate-900/10" />
           </div>
         </div>
       </div>
@@ -1788,10 +1788,10 @@ const StatutoryRapeCaseContent = () => (
             <img 
               src="https://picsum.photos/seed/questions/600/750" 
               alt="FAQ" 
-              className="w-full h-full object-cover blur-[2px] brightness-75"
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 via-transparent to-transparent" />
           </div>
         </div>
         <div className="space-y-12 order-1 lg:order-2">
