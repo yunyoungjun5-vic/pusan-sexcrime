@@ -883,6 +883,16 @@ const Footer = () => (
               <PhoneCall className="w-4 h-4 text-slate-400 shrink-0" />
               <span className="font-black">{CONTACT_PHONE}</span>
             </div>
+            <div className="text-slate-300 text-[13px] pt-2 border-t border-white/10 space-y-1.5">
+              <div className="flex gap-2">
+                <span className="text-slate-400 font-medium">대표자명</span>
+                <span className="font-bold text-slate-200">윤영준</span>
+              </div>
+              <div className="flex gap-2">
+                <span className="text-slate-400 font-medium">사업자등록번호</span>
+                <span className="font-bold text-slate-200">230-91-02378</span>
+              </div>
+            </div>
           </div>
           <div className="flex gap-4 relative z-10">
             <a 
