@@ -53,6 +53,7 @@ import MediaAppearanceTeaser from './components/MediaAppearanceTeaser';
 import PartnersPage from './pages/PartnersPage';
 import MediaAppearancePage from './pages/MediaAppearancePage';
 import RemoteProgramPage from './pages/RemoteProgramPage';
+import DentistryLandingPage from './pages/DentistryLandingPage';
 
 // --- Types ---
 interface NavItem {
@@ -65,7 +66,7 @@ interface NavItem {
 const NAVER_PLACE_URL = "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EC%84%B1%EB%B2%94%EC%A3%84%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4/place/2050622926?searchType=place&lng=128.9705167&lat=35.1246838&placePath=/booking?bookingRedirectUrl=https://m.booking.naver.com/booking/13/bizes/1643592?theme=place&entry=pll&lang=ko&service-target=map-pc&pcmap=1&area=pll&c=15.00,0,0,0,dh";
 const CONTACT_PHONE = "0507-1380-0028";
 
-const NAV_STRUCTURE: NavItem[] = [
+export const NAV_STRUCTURE: NavItem[] = [
   {
     title: "센터소개",
     href: "/about",
@@ -217,7 +218,7 @@ const Navbar = () => {
             }}
           >
             <div className="relative">
-              <div className="absolute -inset-2 bg-primary-deep/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-2 bg-emerald-800/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative text-primary-deep transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                 <Scale className="w-9 h-9" />
               </div>
@@ -258,9 +259,15 @@ const Navbar = () => {
                         <Link 
                           key={child.title} 
                           to={child.href}
+                          onClick={() => {
+                            if (child.href === '/archive/column') {
+                              window.dispatchEvent(new CustomEvent('reset-column-page'));
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                          }}
                           className="group p-3 rounded-xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
                         >
-                          <div className="text-[14px] font-bold text-slate-900 group-hover:text-primary-deep mb-0.5">{child.title}</div>
+                          <div className="text-[14px] font-bold text-slate-900 group-hover:text-emerald-600 mb-0.5">{child.title}</div>
                           {child.description && (
                             <div className="text-[12px] text-slate-500 leading-tight">{child.description}</div>
                           )}
@@ -316,6 +323,12 @@ const Navbar = () => {
                       <Link 
                         key={child.title} 
                         to={child.href}
+                        onClick={() => {
+                          if (child.href === '/archive/column') {
+                            window.dispatchEvent(new CustomEvent('reset-column-page'));
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
                         className="flex flex-col group"
                       >
                         <span className="text-lg font-bold text-slate-900 group-hover:text-primary-deep transition-colors">{child.title}</span>
@@ -462,7 +475,7 @@ const Hero = () => (
             className="absolute -bottom-6 -left-6 lg:-bottom-10 lg:-left-10 p-4 lg:p-6 bg-slate-900 text-white rounded-2xl lg:rounded-3xl shadow-2xl z-20 max-w-[180px] lg:max-w-[240px] hidden sm:block"
           >
             <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-3">
-              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-primary-deep/20 text-indigo-400 flex items-center justify-center">
+              <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl bg-emerald-800/20 text-emerald-500 flex items-center justify-center">
                 <Scale className="w-5 h-5 lg:w-6 lg:h-6" />
               </div>
               <span className="font-black text-sm lg:text-base font-display">법적 조력</span>
@@ -489,7 +502,7 @@ const HomeIntro = () => (
               <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=600" className="rounded-[24px] md:rounded-[32px] shadow-xl grayscale-[0.3] hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
               <div className="p-6 md:p-8 bg-primary-deep rounded-[24px] md:rounded-[32px] text-white shadow-lg">
                 <h4 className="text-2xl md:text-3xl font-black mb-2 font-display">20+</h4>
-                <p className="text-indigo-100 text-xs md:text-sm font-bold">성범죄 상담 특화 경력</p>
+                <p className="text-emerald-100 text-xs md:text-sm font-bold">성범죄 상담 특화 경력</p>
               </div>
             </div>
             <div className="space-y-4 md:space-y-6">
@@ -500,7 +513,7 @@ const HomeIntro = () => (
               <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" className="rounded-[24px] md:rounded-[32px] shadow-xl grayscale-[0.3] hover:grayscale-0 transition-all duration-500" referrerPolicy="no-referrer" />
             </div>
           </div>
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-indigo-50 rounded-full blur-[100px] opacity-50"></div>
+          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-emerald-50 rounded-full blur-[100px] opacity-50"></div>
         </div>
 
         <div className="order-1 lg:order-2">
@@ -583,7 +596,7 @@ const HomeIntro = () => (
             icon: Lock
           }
         ].map((item, idx) => (
-          <div key={idx} className="p-8 md:p-10 rounded-[32px] md:rounded-[40px] bg-bg-soft border border-slate-200 hover:bg-white hover:shadow-2xl hover:shadow-indigo-100/50 transition-all group">
+          <div key={idx} className="p-8 md:p-10 rounded-[32px] md:rounded-[40px] bg-bg-soft border border-slate-200 hover:bg-white hover:shadow-2xl hover:shadow-emerald-100/50 transition-all group">
             <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
               <item.icon className="w-7 h-7 md:w-8 md:h-8 text-primary-deep" />
             </div>
@@ -634,13 +647,13 @@ const HomeExperts = () => (
             role: "부원장 / 기능의학·최면 전문가", 
             tags: ["기능의학", "최면전문가", "성상담 전문가"],
             desc: "원광대 의대 출신의 기능의학 전문가이자 최면 치료 전문가입니다. 몸과 마음의 통합적 치유를 위해 기능의학, 명상, 심신정화 식이요법을 결합한 독창적인 MHS 프로그램을 운영합니다.",
-            image: "https://mhsjoy.mycafe24.com/wp-content/uploads/2024/05/KakaoTalk_20240521_123825759.jpg" 
+            image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774347139/KakaoTalk_20240521_123825759_gslvpg.jpg" 
           },
           { 
             name: "허선무 변호사", 
-            role: "변호사 / 성범죄 전문", 
+            role: "법무법인 소울 변호사 / 성범죄 전문 변호사", 
             tags: ["사법시험 54회", "성범죄 전문"],
-            desc: "사법시험 54회 합격 및 사법연수원(44기)을 수료한 법률 전문가입니다. 부산지방법원 조정위원, 부산지방검찰청 형사조정위원, 부산지방법원 법인파산관재인, 대한법률구조공단 부산지부 구조위원 등을 역임하며 대한변호사협회에 등록된 성범죄 전문 변호사로 활동하고 있습니다.",
+            desc: "사법시험 54회 합격 및 사법연수원(44기)을 수료한 법률 전문가입니다. 법무법인 소울 변호사로서 창원지방법원 조정위원, 창원지방검찰청 형사조정위원 등을 역임하며 전문 변호사로 활동하고 있습니다.",
             image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774346463/member_view23_nnxzhn.jpg" 
           }
         ].map((expert, idx) => (
@@ -669,7 +682,7 @@ const HomeExperts = () => (
                   ))}
                 </div>
                 <h3 className="text-3xl font-black text-white mb-1 font-display">{expert.name}</h3>
-                <p className="text-indigo-300 font-black text-sm uppercase tracking-widest font-display">{expert.role}</p>
+                <p className="text-emerald-400 font-black text-sm uppercase tracking-widest font-display">{expert.role}</p>
               </div>
             </div>
             <div className="p-12">
@@ -734,10 +747,10 @@ const LegalSection = () => (
     <div className="container-custom relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <span className="text-indigo-400 font-black tracking-widest uppercase text-sm mb-4 block font-display">Sentencing Materials</span>
+          <span className="text-emerald-400 font-black tracking-widest uppercase text-sm mb-4 block font-display">Sentencing Materials</span>
           <h2 className="text-4xl lg:text-5xl font-black mb-8 tracking-tight leading-tight font-display text-white">
             법원·검찰 제출용<br />
-            <span className="text-indigo-400">전문 양형자료</span> 지원
+            <span className="text-emerald-400">전문 양형자료</span> 지원
           </h2>
           <p className="text-lg text-slate-400 mb-10 leading-relaxed font-bold">
             심리치료는 단순한 반성을 넘어, 재범 위험성이 현저히 낮아졌음을 입증하는 가장 강력한 객관적 자료입니다. 전문가의 소견서와 평가 보고서로 당신의 변화를 증명하세요.
@@ -768,8 +781,8 @@ const LegalSection = () => (
         <div className="relative">
           <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center">
-                <Gavel className="w-6 h-6 text-indigo-400" />
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                <Gavel className="w-6 h-6 text-emerald-400" />
               </div>
               <div>
                 <h4 className="font-black text-xl font-display text-white">양형자료 패키지</h4>
@@ -798,7 +811,7 @@ const LegalSection = () => (
           </div>
           
           {/* Decorative Glow */}
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-indigo-600/20 rounded-full blur-[80px] -z-10"></div>
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-600/20 rounded-full blur-[80px] -z-10"></div>
         </div>
       </div>
     </div>
@@ -848,7 +861,7 @@ const Footer = () => (
         <div className="col-span-1 lg:col-span-1">
           {/* 센터 이름 (강조된 제목) */}
           <Link to="/" className="flex items-center gap-2 mb-8 relative z-10">
-            <Scale className="w-7 h-7 text-indigo-400" />
+            <Scale className="w-7 h-7 text-emerald-400" />
             <span className="text-xl font-black text-white tracking-tight font-display">부산성범죄심리상담치료센터</span>
           </Link>
 
@@ -982,7 +995,7 @@ const WorkplaceCaseContent = () => (
             <li>• 주변 시선에 대한 과도한 위축</li>
           </ul>
         </div>
-        <div className="p-8 rounded-3xl bg-blue-50 border border-blue-100">
+        <div className="p-8 rounded-3xl bg-emerald-50 border border-emerald-100">
           <h4 className="font-black text-slate-900 mb-4 font-display">사건의 특수성</h4>
           <p className="text-sm text-slate-600 leading-relaxed font-bold">
             법적 문제와 함께 ‘조직 내 징계’가 동시에 진행된다는 점이 가장 큰 특징입니다. 저희는 사건의 맥락, 관계의 구조, 감정의 흐름을 전문적으로 분석합니다.
@@ -992,10 +1005,10 @@ const WorkplaceCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           직장·학교 사건은 ‘성 문제’이기도 하지만 동시에 <br />
           관계 경계와 권력 구조에 대한 이해 부족 문제이기도 합니다.
         </p>
@@ -1007,9 +1020,9 @@ const WorkplaceCaseContent = () => (
             { title: "인지 왜곡 교정", icon: Zap },
             { title: "심리적 안정 회복", icon: Users }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mx-auto mb-6" />
-              <h4 className="text-xl font-black font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-black font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
@@ -1140,10 +1153,10 @@ const StalkingCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           스토킹 및 주거침입 사건은 재발 위험성을 낮추는 구체적 개입이 필요합니다. <br />
           단순 상담이 아닌 구조화된 재범방지 프로그램을 운영합니다.
         </p>
@@ -1155,9 +1168,9 @@ const StalkingCaseContent = () => (
             { title: "정서적 독립성 회복", icon: Users },
             { title: "재범 방지 행동 계획", icon: ClipboardCheck }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mx-auto mb-6" />
-              <h4 className="text-xl font-black font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-black font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
@@ -1354,10 +1367,10 @@ const JuvenileCaseContent = () => (
     </section>
 
     {/* 4. 상담 및 치료 목표 (통합) */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           저희 센터의 목표는 단순한 “반성문 작성”이 아닙니다. <br />
           진짜 목표는 재범 방지와 심리 구조 교정입니다.
         </p>
@@ -1369,17 +1382,17 @@ const JuvenileCaseContent = () => (
             { title: "성적 자극 재구조화", icon: Search },
             { title: "정서 회복 및 자기통제", icon: Users }
           ].map((item, idx) => (
-            <div key={idx} className="p-6 rounded-3xl bg-white/5 border border-white/10 text-center hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mx-auto mb-4" />
-              <h4 className="font-black font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-6 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-4" />
+              <h4 className="font-black font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 text-center">
-          <p className="text-lg leading-relaxed font-bold">
+        <div className="mt-16 p-8 rounded-3xl bg-emerald-600/10 border border-emerald-500/20 text-center">
+          <p className="text-lg leading-relaxed font-bold text-emerald-900">
             저희는 상담 과정을 통해 <br />
-            <span className="text-white font-black">“나는 왜 그 행동을 했는가?” → “다시는 하지 않기 위해 무엇을 바꿀 것인가?”</span> <br />
+            <span className="text-emerald-950 font-black">“나는 왜 그 행동을 했는가?” → “다시는 하지 않기 위해 무엇을 바꿀 것인가?”</span> <br />
             이 질문에 구체적으로 답하도록 돕습니다.
           </p>
         </div>
@@ -1551,19 +1564,19 @@ const StatutoryRapeCaseContent = () => (
         <div className="space-y-12">
           <div className="p-10 bg-white/10 backdrop-blur-md rounded-[40px] border border-white/20">
             <h3 className="text-2xl font-black mb-6 flex items-center gap-3 text-white">
-              <Scale className="w-8 h-8 text-indigo-400" />
+              <Scale className="w-8 h-8 text-emerald-400" />
               미성년자 의제 강간죄란?
             </h3>
-            <p className="text-xl text-indigo-100 leading-relaxed font-bold mb-8">
+            <p className="text-xl text-emerald-100 leading-relaxed font-bold mb-8">
               형법 제305조에 따라, <span className="text-yellow-300">만 16세 미만</span>의 미성년자와 성관계를 한 경우, 폭행이나 협박이 없었더라도, 심지어 <span className="text-yellow-300">서로 합의 하에 이루어졌더라도</span> 강간죄와 동일하게 처벌하는 규정입니다.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <p className="text-sm text-indigo-200 mb-2">핵심 기준 01</p>
+                <p className="text-sm text-emerald-200 mb-2">핵심 기준 01</p>
                 <p className="text-lg font-bold text-white">피해자의 연령 (만 16세 미만)</p>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                <p className="text-sm text-indigo-200 mb-2">핵심 기준 02</p>
+                <p className="text-sm text-emerald-200 mb-2">핵심 기준 02</p>
                 <p className="text-lg font-bold text-white">성적 자기결정권 행사의 미성숙</p>
               </div>
             </div>
@@ -1653,7 +1666,7 @@ const StatutoryRapeCaseContent = () => (
             { num: "03", title: "전문가 개입의 시점", desc: "수사 초기부터 전문 상담 기관의 개입을 통해 자신의 심리 상태를 객관화하고 재발 방지 의지를 서면으로 증명해야 합니다." }
           ].map((item, idx) => (
             <div key={idx} className="flex gap-8 items-start bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-50 flex items-center justify-center shrink-0 text-2xl font-black text-indigo-600">
+              <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0 text-2xl font-black text-emerald-600">
                 {item.num}
               </div>
               <div className="space-y-3">
@@ -1694,7 +1707,7 @@ const StatutoryRapeCaseContent = () => (
                 <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md text-white flex items-center justify-center mb-6">
                   <item.icon className="w-6 h-6" />
                 </div>
-                <div className="text-xs font-black text-indigo-400 mb-2 font-display tracking-widest uppercase">STEP {item.step}</div>
+                <div className="text-xs font-black text-emerald-400 mb-2 font-display tracking-widest uppercase">STEP {item.step}</div>
                 <h4 className="text-xl font-black text-white mb-4 font-display leading-tight">{item.title}</h4>
                 <p className="text-slate-300 text-sm leading-relaxed font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500">{item.desc}</p>
               </div>
@@ -1705,7 +1718,7 @@ const StatutoryRapeCaseContent = () => (
     </section>
 
     {/* 7. 양형 자료로서의 심리 상담 섹션 */}
-    <section className="bg-indigo-600 rounded-[64px] p-8 lg:p-24 text-white relative overflow-hidden">
+    <section className="bg-emerald-800 rounded-[64px] p-8 lg:p-24 text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <img 
           src="https://picsum.photos/seed/document/1200/800" 
@@ -1717,7 +1730,7 @@ const StatutoryRapeCaseContent = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
         <div className="space-y-8">
           <h2 className="text-3xl lg:text-5xl font-black font-display text-white">양형 자료로서의<br />심리 상담</h2>
-          <p className="text-xl text-indigo-100 leading-relaxed font-bold">
+          <p className="text-xl text-emerald-100 leading-relaxed font-bold">
             단순한 반성문보다 강력한 것은 <span className="text-white underline underline-offset-8 decoration-white/30">"객관적인 변화의 증거"</span>입니다.
           </p>
           <div className="space-y-4">
@@ -1728,14 +1741,14 @@ const StatutoryRapeCaseContent = () => (
               "장기적인 치료 계획 및 실천 의지"
             ].map((text, i) => (
               <div key={i} className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-indigo-300 shrink-0" />
+                <CheckCircle2 className="w-6 h-6 text-emerald-300 shrink-0" />
                 <span className="text-lg font-bold text-white">{text}</span>
               </div>
             ))}
           </div>
         </div>
         <div className="bg-white/10 backdrop-blur-md p-10 rounded-[40px] border border-white/20">
-          <p className="text-lg leading-relaxed font-bold text-indigo-50">
+          <p className="text-lg leading-relaxed font-bold text-emerald-50">
             재판부는 가해자가 자신의 행위를 얼마나 깊이 이해하고 있는지, 그리고 <span className="text-white font-black">다시 범죄를 저지르지 않을 구체적인 준비가 되었는지</span>를 중요하게 봅니다. 본 센터의 소견서는 그 진정성을 뒷받침하는 핵심 자료가 됩니다.
           </p>
         </div>
@@ -1747,7 +1760,7 @@ const StatutoryRapeCaseContent = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="space-y-12">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-2xl text-lg font-bold">
-            <Lock className="w-5 h-5 text-indigo-400" />
+            <Lock className="w-5 h-5 text-emerald-400" />
             100% 철저한 비밀 보장
           </div>
           <h2 className="text-3xl lg:text-5xl font-black text-slate-900 font-display leading-tight">안전하고 편안한<br />상담 환경</h2>
@@ -1791,7 +1804,7 @@ const StatutoryRapeCaseContent = () => (
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/40 via-transparent to-transparent" />
           </div>
         </div>
         <div className="space-y-12 order-1 lg:order-2">
@@ -1804,7 +1817,7 @@ const StatutoryRapeCaseContent = () => (
             ].map((faq, idx) => (
               <div key={idx} className="p-8 rounded-[32px] border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex gap-4 mb-4">
-                  <span className="text-indigo-600 font-black text-2xl font-display">Q.</span>
+                  <span className="text-emerald-600 font-black text-2xl font-display">Q.</span>
                   <h4 className="text-lg font-black text-slate-900 font-display">{faq.q}</h4>
                 </div>
                 <div className="flex gap-4">
@@ -1833,7 +1846,7 @@ const StatutoryRapeCaseContent = () => (
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="p-10 bg-white rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-all">
             <div className="flex items-center gap-4 mb-6">
-              <div className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-bold">사례 01</div>
+              <div className="px-4 py-1 bg-emerald-50 text-emerald-600 rounded-full text-sm font-bold">사례 01</div>
               <h4 className="text-xl font-black text-slate-900 font-display">채팅 앱을 통해 만난 사례</h4>
             </div>
             <p className="text-slate-600 leading-relaxed font-bold mb-6">
@@ -1849,7 +1862,7 @@ const StatutoryRapeCaseContent = () => (
           </div>
           <div className="p-10 bg-white rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-all">
             <div className="flex items-center gap-4 mb-6">
-              <div className="px-4 py-1 bg-indigo-50 text-indigo-600 rounded-full text-sm font-bold">사례 02</div>
+              <div className="px-4 py-1 bg-emerald-50 text-emerald-600 rounded-full text-sm font-bold">사례 02</div>
               <h4 className="text-xl font-black text-slate-900 font-display">호감을 가지고 만났으나 법적 문제가 된 사례</h4>
             </div>
             <p className="text-slate-600 leading-relaxed font-bold mb-6">
@@ -1889,7 +1902,7 @@ const StatutoryRapeCaseContent = () => (
         <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
           <a 
             href={`tel:${CONTACT_PHONE}`}
-            className="inline-flex items-center justify-center gap-3 px-10 py-6 bg-white text-slate-900 text-xl font-black rounded-[32px] hover:bg-indigo-50 transition-all shadow-2xl"
+            className="inline-flex items-center justify-center gap-3 px-10 py-6 bg-white text-slate-900 text-xl font-black rounded-[32px] hover:bg-emerald-50 transition-all shadow-2xl"
           >
             <PhoneCall className="w-6 h-6" />
             전화 상담 ({CONTACT_PHONE})
@@ -1898,13 +1911,13 @@ const StatutoryRapeCaseContent = () => (
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 px-10 py-6 bg-indigo-600 text-white text-xl font-black rounded-[32px] hover:bg-indigo-700 transition-all shadow-2xl shadow-indigo-500/20"
+            className="inline-flex items-center justify-center gap-3 px-10 py-6 bg-emerald-600 text-white text-xl font-black rounded-[32px] hover:bg-emerald-700 transition-all shadow-2xl shadow-emerald-500/20"
           >
             온라인 예약하기
             <ArrowRight className="w-6 h-6" />
           </a>
         </div>
-        <p className="text-indigo-300 font-bold">모든 상담은 철저히 비밀로 진행됩니다.</p>
+        <p className="text-[#064e3b] font-bold">모든 상담은 철저히 비밀로 진행됩니다.</p>
       </div>
     </section>
   </div>
@@ -1964,10 +1977,10 @@ const TongmaeumCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           통신매체이용음란 문제의 핵심은 <br />
           “다시는 같은 상황에서 같은 선택을 하지 않도록 만드는 것”입니다.
         </p>
@@ -1980,15 +1993,15 @@ const TongmaeumCaseContent = () => (
             { title: "자극-행동 구조 분석", icon: Search },
             { title: "현실적 재발 방지 계획", icon: ClipboardCheck }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mb-6" />
-              <h4 className="text-xl font-black mb-2 font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-black mb-2 font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 text-center">
-          <p className="text-lg leading-relaxed font-bold">
+        <div className="mt-16 p-8 rounded-3xl bg-emerald-600/10 border border-emerald-500/20 text-center">
+          <p className="text-lg leading-relaxed font-bold text-emerald-900">
             후회만으로는 구조가 바뀌지 않을 수 있습니다. <br />
             막연한 다짐이 아니라 구조적 변화가 필요합니다.
           </p>
@@ -2090,10 +2103,10 @@ const DeepfakeCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           딥페이크·합성물 문제의 핵심은 기술을 멈추는 것이 아니라 <br />
           왜곡된 인식과 충동 구조를 교정하는 것입니다.
         </p>
@@ -2106,15 +2119,15 @@ const DeepfakeCaseContent = () => (
             { title: "자극-행동 구조 분석", icon: Search },
             { title: "재발 방지 계획 수립", icon: ClipboardCheck }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mb-6" />
-              <h4 className="text-xl font-black mb-2 font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-black mb-2 font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 text-center">
-          <p className="text-lg leading-relaxed font-bold">
+        <div className="mt-16 p-8 rounded-3xl bg-emerald-600/10 border border-emerald-500/20 text-center">
+          <p className="text-lg leading-relaxed font-bold text-emerald-900">
             충동은 억제만으로는 사라지지 않습니다. 이해하고 재구성해야 약화됩니다. <br />
             막연한 다짐이 아니라 구조적 변화가 필요합니다.
           </p>
@@ -2218,10 +2231,10 @@ const FilmingCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16 font-bold">
+        <h2 className="text-3xl lg:text-4xl font-black mb-12 text-center font-display text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           카촬 문제의 핵심은 단순한 반성이 아니라 반복 가능성의 차단입니다. <br />
           디지털 자극은 계속 존재합니다. 환경을 피하는 것이 아니라 통제력을 갖추는 것이 핵심입니다.
         </p>
@@ -2234,19 +2247,19 @@ const FilmingCaseContent = () => (
             { title: "공감 능력 회복", icon: Users },
             { title: "현실적 재발 방지 계획", icon: ClipboardCheck }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-              <item.icon className="w-8 h-8 text-indigo-400 mb-6" />
-              <h4 className="text-xl font-black mb-2 font-display text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-black mb-2 font-display text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 text-center">
-          <p className="text-lg leading-relaxed font-bold">
+        <div className="mt-16 p-8 rounded-3xl bg-emerald-600/10 border border-emerald-500/20 text-center">
+          <p className="text-lg leading-relaxed font-bold text-emerald-950">
             충동은 억누르는 것이 아니라 이해하고 재구성해야 줄어듭니다. <br />
             막연한 다짐이 아니라 구조적인 변화가 필요합니다.
           </p>
-          <p className="text-2xl font-black mt-6 text-indigo-300 font-display">
+          <p className="text-2xl font-black mt-6 text-emerald-700 font-display">
             “다시는 안 하겠다”는 다짐이 실질적인 결과로 이어지는 과정을 만듭니다.
           </p>
         </div>
@@ -2348,10 +2361,10 @@ const MolestationCaseContent = () => (
     </section>
 
     {/* 2. 상담 및 치료 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-center text-white">상담 및 치료 목표</h2>
-        <p className="text-xl text-indigo-200 text-center mb-16">
+        <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-center text-emerald-900">상담 및 치료 목표</h2>
+        <p className="text-xl text-emerald-800 text-center mb-16 font-bold">
           강제추행 대응의 핵심은 “다시는 같은 상황을 만들지 않는 것”입니다. <br />
           상담은 단순한 반성 유도가 아닙니다. 행동의 구조를 바꾸는 과정입니다.
         </p>
@@ -2364,19 +2377,19 @@ const MolestationCaseContent = () => (
             { title: "공감 능력 회복", icon: Users },
             { title: "재발 방지 계획 구체화", icon: ClipboardCheck }
           ].map((item, idx) => (
-            <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-              <item.icon className="w-8 h-8 text-indigo-400 mb-6" />
-              <h4 className="text-xl font-bold mb-2 text-white">{item.title}</h4>
+            <div key={idx} className="p-8 rounded-3xl bg-white border border-emerald-200/60 shadow-sm hover:shadow-md hover:border-emerald-300 transition-colors text-slate-900 text-center">
+              <item.icon className="w-8 h-8 text-emerald-600 mx-auto mb-6" />
+              <h4 className="text-xl font-bold mb-2 text-slate-900">{item.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 p-8 rounded-3xl bg-indigo-600/20 border border-indigo-500/30 text-center">
+        <div className="mt-16 p-8 rounded-3xl bg-emerald-600/10 border border-emerald-500/20 text-center">
           <p className="text-lg leading-relaxed">
             막연한 다짐은 오래가지 않습니다. 구조를 바꾸어야 행동이 바뀝니다. <br />
             상담을 통해 충동이 작동하는 지점을 명확히 알고, 위험 상황을 예측하며, 실제 대응 전략을 훈련합니다.
           </p>
-          <p className="text-2xl font-bold mt-6 text-indigo-300">
+          <p className="text-2xl font-bold mt-6 text-emerald-700">
             이 과정이 있을 때 “다시는 하지 않겠다”는 말이 실질적인 가능성으로 바뀝니다.
           </p>
         </div>
@@ -2386,7 +2399,7 @@ const MolestationCaseContent = () => (
     {/* 3. 양형자료 대응 */}
     <section>
       <h2 className="text-3xl font-bold text-slate-900 mb-12 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-indigo-100 text-[#4F46E5] flex items-center justify-center">
+        <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
           <Gavel className="w-6 h-6" />
         </div>
         양형자료 대응
@@ -2400,23 +2413,23 @@ const MolestationCaseContent = () => (
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-100 mt-8">
               <p className="text-slate-900 font-medium">상담을 통해 형성된 구체적 변화 과정과 구조화된 재발 방지 계획은 당사자의 책임 인식과 개선 의지를 보다 명확하게 보여줄 수 있으며, 이러한 전문적이고 체계적인 자료는 양형과정에서 매우 의미 있게 참고될 수 있습니다.</p>
             </div>
-            <p className="text-xl font-bold text-[#4F46E5] mt-8">중요한 것은 형식이 아니라 실질적인 변화의 내용입니다.</p>
+            <p className="text-xl font-bold text-emerald-600 mt-8">중요한 것은 형식이 아니라 실질적인 변화의 내용입니다.</p>
           </div>
         </div>
         <div className="space-y-6">
-          <div className="p-8 rounded-3xl bg-indigo-50 border border-indigo-100">
+          <div className="p-8 rounded-3xl bg-emerald-50 border border-emerald-100">
             <h4 className="font-bold text-slate-900 mb-4">전문 대응의 가치</h4>
             <ul className="space-y-4 text-sm text-slate-600">
-              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0" /> 행동 원인에 대한 직면</li>
-              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0" /> 재발 방지를 위한 구체적 준비</li>
-              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0" /> 삶의 방향성 재설정</li>
+              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" /> 행동 원인에 대한 직면</li>
+              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" /> 재발 방지를 위한 구체적 준비</li>
+              <li className="flex gap-2"><div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" /> 삶의 방향성 재설정</li>
             </ul>
           </div>
           <a 
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full py-5 bg-[#4F46E5] text-white text-center font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-xl shadow-indigo-100"
+            className="block w-full py-5 bg-[#059669] text-white text-center font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-xl shadow-emerald-100"
           >
             상담 및 자료 준비 시작하기
           </a>
@@ -2431,7 +2444,7 @@ const RapeCaseContent = () => (
     {/* 2. 사건 개요 설명 */}
     <section>
       <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-indigo-100 text-[#4F46E5] flex items-center justify-center">
+        <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
           <FileText className="w-6 h-6" />
         </div>
         강간 / 준강간 사건의 특징
@@ -2453,7 +2466,7 @@ const RapeCaseContent = () => (
     {/* 3. 사건 이후 자주 나타나는 심리 상태 */}
     <section>
       <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-indigo-100 text-[#4F46E5] flex items-center justify-center">
+        <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
           <AlertCircle className="w-6 h-6" />
         </div>
         사건 이후의 심리적 구조
@@ -2478,7 +2491,7 @@ const RapeCaseContent = () => (
           { 
             title: "인지 왜곡과 합리화", 
             items: ["동의에 대한 자의적 해석(동의 착각)", "관계 맥락을 통한 행위 정당화", "책임 분산 및 상황 탓으로 돌리기"],
-            color: "bg-indigo-50 border-indigo-100 text-indigo-900"
+            color: "bg-emerald-50 border-emerald-100 text-emerald-950"
           }
         ].map((group, idx) => (
           <div key={idx} className={`p-8 rounded-[32px] border ${group.color}`}>
@@ -2497,9 +2510,9 @@ const RapeCaseContent = () => (
     </section>
 
     {/* 4. 상담 목표 */}
-    <section className="bg-slate-900 rounded-[48px] p-12 lg:p-20 text-white">
+    <section className="bg-emerald-50 rounded-[48px] p-12 lg:p-20 border border-emerald-100 text-slate-900">
       <div className="max-w-3xl">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-white">본 센터의 개입 목표</h2>
+        <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-emerald-900">본 센터의 개입 목표</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
           {[
             "사건 발생 당시의 심리구조 정밀 분석",
@@ -2509,10 +2522,10 @@ const RapeCaseContent = () => (
             "객관적 지표를 통한 재발 위험 차단"
           ].map((goal, idx) => (
             <div key={idx} className="flex gap-4 items-start">
-              <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center shrink-0 font-bold text-sm">
+              <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 font-bold text-sm">
                 {idx + 1}
               </div>
-              <p className="font-medium text-slate-200">{goal}</p>
+              <p className="font-medium text-slate-800">{goal}</p>
             </div>
           ))}
         </div>
@@ -2531,7 +2544,7 @@ const RapeCaseContent = () => (
           { step: "05", title: "재발방지 설계", desc: "개인별 트리거 목록화, 대응 루틴 설계, 자기통제 프로토콜 구축" }
         ].map((item, idx) => (
           <div key={idx} className="flex flex-col md:flex-row gap-6 p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all group">
-            <div className="text-4xl font-black text-indigo-100 group-hover:text-indigo-500 transition-colors shrink-0">{item.step}</div>
+            <div className="text-4xl font-black text-emerald-100 group-hover:text-emerald-500 transition-colors shrink-0">{item.step}</div>
             <div>
               <h4 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h4>
               <p className="text-slate-500 leading-relaxed">{item.desc}</p>
@@ -2552,7 +2565,7 @@ const RapeCaseContent = () => (
         ].map((faq, idx) => (
           <div key={idx} className="p-8 rounded-3xl border border-slate-100 bg-white">
             <div className="flex gap-4 mb-4">
-              <span className="text-[#4F46E5] font-black text-xl">Q.</span>
+              <span className="text-emerald-600 font-black text-xl">Q.</span>
               <h4 className="text-lg font-bold text-slate-900">{faq.q}</h4>
             </div>
             <div className="flex gap-4">
@@ -2565,7 +2578,7 @@ const RapeCaseContent = () => (
     </section>
 
     {/* 8. 이런 분들이 상담을 받습니다 */}
-    <section className="p-12 lg:p-20 rounded-[48px] bg-indigo-50 border border-indigo-100">
+    <section className="p-12 lg:p-20 rounded-[48px] bg-emerald-50 border border-emerald-100">
       <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">이런 분들께 권장합니다</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -2576,7 +2589,7 @@ const RapeCaseContent = () => (
           "다시는 같은 실수를 반복하고 싶지 않은 경우"
         ].map((text, idx) => (
           <div key={idx} className="p-6 bg-white rounded-2xl shadow-sm flex items-center gap-4">
-            <div className="w-2 h-2 rounded-full bg-indigo-500 shrink-0"></div>
+            <div className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></div>
             <span className="text-slate-700 font-medium">{text}</span>
           </div>
         ))}
@@ -2586,7 +2599,7 @@ const RapeCaseContent = () => (
           href={NAVER_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-10 py-5 bg-[#4F46E5] text-white font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-xl shadow-indigo-200"
+          className="inline-flex items-center gap-2 px-10 py-5 bg-[#059669] text-white font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-xl shadow-emerald-200"
         >
           성범죄 가해자 심리상담 신청하기
           <ArrowRight className="w-5 h-5" />
@@ -2605,7 +2618,7 @@ const CasePage = ({ title, slug }: { title: string; slug: string }) => (
     {/* Page Header */}
     <div className="bg-slate-50 py-16 lg:py-32 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-indigo-600 font-bold mb-8 hover:text-indigo-700 transition-colors">
+        <Link to="/" className="inline-flex items-center gap-2 text-emerald-600 font-bold mb-8 hover:text-emerald-700 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           사건유형 전체보기
         </Link>
@@ -2745,7 +2758,7 @@ const CasePage = ({ title, slug }: { title: string; slug: string }) => (
                   href={NAVER_PLACE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full py-4 bg-[#1565C0] text-white text-center font-bold rounded-2xl hover:bg-[#115599] transition-colors"
+                  className="block w-full py-4 bg-primary-deep text-white text-center font-bold rounded-2xl hover:bg-emerald-900 transition-colors"
                 >
                   온라인 상담 신청
                 </a>
@@ -2768,7 +2781,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
     {/* Page Header */}
     <div className="bg-slate-50 py-16 lg:py-32 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-indigo-600 font-bold mb-8 hover:text-indigo-700 transition-colors">
+        <Link to="/" className="inline-flex items-center gap-2 text-emerald-600 font-bold mb-8 hover:text-emerald-700 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           상담/치료 전체보기
         </Link>
@@ -2796,7 +2809,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
         ].map((item, idx) => (
           <div key={idx} className="relative group">
             <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 text-center hover:bg-white hover:shadow-xl transition-all h-full">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <item.icon className="w-6 h-6" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">{item.step}</h3>
@@ -2828,7 +2841,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
                   <p className="text-lg text-slate-700 leading-relaxed">
-                    성중독과 행동중독은 <span className="font-bold text-indigo-600">단순한 의지의 문제가 아닙니다.</span><br />
+                    성중독과 행동중독은 <span className="font-bold text-emerald-600">단순한 의지의 문제가 아닙니다.</span><br />
                     반복된 자극이 뇌에 학습되고, 스트레스와 감정을 처리하는 방식이 왜곡되며 특정 상황에서 통제가 무너지는 구조가 형성됩니다.
                   </p>
                   <p className="text-lg text-slate-700 leading-relaxed">
@@ -2847,7 +2860,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                       "후회하면서도 다시 같은 선택을 한다"
                     ].map((text, i) => (
                       <li key={i} className="flex items-start gap-3 text-slate-600">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2" />
                         <span>{text}</span>
                       </li>
                     ))}
@@ -2861,7 +2874,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
               <div className="pt-12 border-t border-slate-100">
                 <p className="text-xl text-slate-800 leading-relaxed mb-8">
                   치료는 “하지 말라”는 조언이 아닙니다.<br />
-                  <span className="font-bold text-indigo-600">왜 반복되는지, 어디서 통제가 무너지는지, 어떤 왜곡된 인식이 개입하는지</span> 그 구조를 객관적으로 분석하고 교정하는 과정입니다.
+                  <span className="font-bold text-emerald-600">왜 반복되는지, 어디서 통제가 무너지는지, 어떤 왜곡된 인식이 개입하는지</span> 그 구조를 객관적으로 분석하고 교정하는 과정입니다.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-6 bg-rose-50 rounded-2xl border border-rose-100">
@@ -2892,21 +2905,21 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     <p className="font-bold text-slate-900">성범죄 가해자 심리상담에서는</p>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5 shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 shrink-0" />
                         <span>사건이 발생한 상황과 배경을 차분하게 정리하고</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5 shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 shrink-0" />
                         <span>자신의 감정과 행동 패턴을 이해하며</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2.5 shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2.5 shrink-0" />
                         <span>비슷한 상황이 다시 발생하지 않도록 준비하는 과정이 이루어집니다.</span>
                       </li>
                     </ul>
                   </div>
                   
-                  <p className="text-indigo-600 font-bold">
+                  <p className="text-emerald-600 font-bold font-display">
                     이 과정은 단순히 사건만을 다루는 것이 아니라 앞으로의 삶을 안정적으로 정리하는 과정이기도 합니다.
                   </p>
                 </div>
@@ -2935,21 +2948,21 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     <p className="font-bold text-slate-900">실제로 많은 분들이 사건 이후 성범죄 가해자 심리상담을 통해</p>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
+                        <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
                         <span>자신의 행동 원인을 이해하고</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
+                        <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
                         <span>충동이나 판단 오류가 발생했던 상황을 분석하며</span>
                       </li>
                       <li className="flex items-start gap-3">
-                        <div className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
+                        <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
                         <span>다시 같은 일이 발생하지 않도록 행동을 교정하는 과정을 시작합니다.</span>
                       </li>
                     </ul>
                   </div>
-                  <div className="p-8 bg-indigo-50 rounded-3xl border border-indigo-100">
-                    <p className="text-indigo-900 font-medium">
+                  <div className="p-8 bg-emerald-50 rounded-3xl border border-emerald-100">
+                    <p className="text-emerald-900 font-medium">
                       이러한 과정은 단순히 개인의 심리 회복에만 의미가 있는 것이 아니라 <span className="font-bold">변화를 위해 실제로 어떤 노력을 했는지를 보여주는 과정</span>이 되기도 합니다.
                     </p>
                   </div>
@@ -2957,17 +2970,17 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
 
                 <div className="space-y-6 pt-8 border-t border-slate-100">
                   <p>
-                    전문 상담기관에서의 성범죄 가해자 심리상담 참여, 교육 과정, 행동 교정 노력 등은 필요할 경우 <span className="font-bold text-indigo-600 underline decoration-2 underline-offset-4">객관적인 자료나 전문가 의견 형태로 정리될 수 있으며 재판 과정에서 비중있게 참고되는 요소가 됩니다.</span>
+                    전문 상담기관에서의 성범죄 가해자 심리상담 참여, 교육 과정, 행동 교정 노력 등은 필요할 경우 <span className="font-bold text-emerald-600 underline decoration-2 underline-offset-4">객관적인 자료나 전문가 의견 형태로 정리될 수 있으며 재판 과정에서 비중있게 참고되는 요소가 됩니다.</span>
                   </p>
                   <p>
                     물론 성범죄 가해자 심리상담이 재판의 결과를 직접적으로 결정하는 것은 아닙니다. 그러나 사건 이후 아무런 변화 노력 없이 시간을 보내는 것보다 자신의 행동을 이해하고 재발을 방지하려는 노력을 실제로 시작하는 것은 <span className="font-bold text-slate-900">양형 과정에서 충분히 고려될 수 있는 중요한 요소</span>가 될 수 있습니다.
                   </p>
                   <p className="bg-slate-50 text-slate-900 p-8 rounded-2xl border border-slate-100">
-                    즉, 사건 이후 어떤 태도로 변화 노력을 했는지, 재발 방지를 위해 어떤 과정을 시작했는지는 <span className="text-[#1565C0] font-bold">양형 판단 과정에서 의미 있게 반영될 가능성이 높습니다.</span>
+                    즉, 사건 이후 어떤 태도로 변화 노력을 했는지, 재발 방지를 위해 어떤 과정을 시작했는지는 <span className="text-emerald-600 font-bold">양형 판단 과정에서 의미 있게 반영될 가능성이 높습니다.</span>
                   </p>
                   <p className="text-center font-bold text-xl text-slate-900">
                     따라서 성범죄 가해자 심리상담은 단순히 마음을 정리하는 시간이 아니라 <br className="hidden sm:block" />
-                    <span className="text-indigo-600">앞으로의 삶을 다시 정리하고 변화의 과정을 시작하는 첫 단계</span>가 될 수 있습니다.
+                    <span className="text-emerald-600">앞으로의 삶을 다시 정리하고 변화의 과정을 시작하는 첫 단계</span>가 될 수 있습니다.
                   </p>
                 </div>
               </div>
@@ -2998,23 +3011,23 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   전문가와 함께 상황을 정리하면 생각보다 빠르게 마음이 정리되는 경우도 많습니다.
                 </p>
               </div>
-              <div className="bg-[#1565C0] text-white p-12 lg:p-16 rounded-[48px] flex flex-col justify-center text-center space-y-10 shadow-2xl shadow-blue-200/20">
+              <div className="bg-primary-deep text-white p-12 lg:p-16 rounded-[48px] flex flex-col justify-center text-center space-y-10 shadow-2xl shadow-emerald-200/20">
                 <h3 className="text-3xl lg:text-4xl font-bold text-white leading-tight break-keep [text-wrap:balance]">
                   성범죄 가해자 심리상담은 <br className="hidden sm:block" />
                   삶을 다시 정리하는 출발점이 될 수 있습니다
                 </h3>
-                <div className="space-y-6 text-lg lg:text-xl text-blue-50/90 leading-relaxed">
+                <div className="space-y-6 text-lg lg:text-xl text-emerald-50/90 leading-relaxed">
                   <p className="break-keep">
                     성범죄 가해자 심리상담을 시작하는 것은 자신을 포기하는 것이 아니라 <br className="hidden md:block" />
                     오히려 자신의 삶을 다시 정리하려는 용기 있는 선택입니다.
                   </p>
-                  <p className="text-blue-100/80">사건 이후의 삶은 아직 끝난 것이 아닙니다.</p>
+                  <p className="text-emerald-100/80">사건 이후의 삶은 아직 끝난 것이 아닙니다.</p>
                   <p className="text-2xl lg:text-3xl font-black text-white mt-4">
                     지금의 선택이 앞으로의 방향을 바꿀 수 있습니다.
                   </p>
                 </div>
                 <div className="pt-8 border-t border-white/10">
-                  <p className="text-blue-100 font-medium text-lg">
+                  <p className="text-emerald-100 font-medium text-lg">
                     혼자 고민하기보다 전문가와 함께 상황을 차분히 정리해 보는 것이 <br className="hidden sm:block" />
                     실질적인 도움이 될 수 있습니다.
                   </p>
@@ -3042,7 +3055,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   </ul>
                   <p className="text-xl font-bold text-slate-900 pt-4">
                     그리고 스스로 묻게 됩니다.<br />
-                    <span className="text-indigo-600">“나는 이 패턴을 계속 안고 살아가도 괜찮은가.”</span>
+                    <span className="text-emerald-600">“나는 이 패턴을 계속 안고 살아가도 괜찮은가.”</span>
                   </p>
                 </div>
               </div>
@@ -3072,7 +3085,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     "불안과 죄책감이 함께 따라온다"
                   ].map((text, i) => (
                     <li key={i} className="flex items-start gap-3 text-slate-700">
-                      <div className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
+                      <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-xs font-bold">✓</div>
                       <span>{text}</span>
                     </li>
                   ))}
@@ -3088,7 +3101,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   <p>반복될수록 회로는 강화되고, 강화될수록 통제는 어려워집니다.</p>
                   <p className="text-slate-900 font-medium">의지로 누르는 것은 잠시 멈출 수는 있어도 구조를 바꾸지는 못합니다.</p>
                   <div className="pt-6 border-t border-slate-200">
-                    <p className="text-xl font-bold text-slate-900">치료의 핵심은 억제가 아니라 <span className="text-[#1565C0]">재구성</span>입니다.</p>
+                    <p className="text-xl font-bold text-slate-900">치료의 핵심은 억제가 아니라 <span className="text-emerald-600">재구성</span>입니다.</p>
                   </div>
                 </div>
               </div>
@@ -3104,18 +3117,18 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   { title: "건강한 성적 에너지 재설계", icon: Zap },
                   { title: "재발 방지 계획 수립", icon: ClipboardCheck }
                 ].map((item, i) => (
-                  <div key={i} className="p-6 bg-slate-50 rounded-3xl text-center hover:bg-indigo-50 transition-colors group">
-                    <item.icon className="w-8 h-8 mx-auto mb-4 text-indigo-600 group-hover:scale-110 transition-transform" />
+                  <div key={i} className="p-6 bg-slate-50 rounded-3xl text-center hover:bg-emerald-50 transition-colors group">
+                    <item.icon className="w-8 h-8 mx-auto mb-4 text-emerald-600 group-hover:scale-110 transition-transform" />
                     <p className="font-bold text-slate-900 text-sm leading-tight">{item.title}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-12 text-center text-lg text-slate-600">이는 단순한 상담이 아니라 <span className="text-indigo-600 font-bold">행동 시스템을 다시 설계하는 과정</span>입니다.</p>
+              <p className="mt-12 text-center text-lg text-slate-600">이는 단순한 상담이 아니라 <span className="text-emerald-600 font-bold">행동 시스템을 다시 설계하는 과정</span>입니다.</p>
             </div>
 
-            <div className="bg-[#1565C0] text-white p-12 rounded-[40px] text-center space-y-6">
+            <div className="bg-primary-deep text-white p-12 rounded-[40px] text-center space-y-6">
               <h3 className="text-3xl font-bold">지금 멈추는 선택이 가장 안전합니다</h3>
-              <p className="text-xl text-blue-100">많은 문제는 “더 심각해진 뒤”에 상담실을 찾습니다.</p>
+              <p className="text-xl text-emerald-100">많은 문제는 “더 심각해진 뒤”에 상담실을 찾습니다.</p>
               <div className="max-w-3xl mx-auto space-y-6 text-lg">
                 <p>그러나 진짜 변화는 아직 통제 가능할 때 시작하는 것이 가장 효과적입니다.</p>
                 <p className="bg-white/10 p-8 rounded-3xl backdrop-blur-sm">
@@ -3138,14 +3151,14 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     <p className="text-slate-500 mb-6 italic">“많은 분들이 처음에는 이렇게 말합니다.”</p>
                     <div className="space-y-4">
                       {["“직접적인 접촉은 없었습니다.”", "“순간적인 호기심이었습니다.”", "“온라인에서 일어난 일이었습니다.”"].map((quote, i) => (
-                        <p key={i} className="text-lg font-medium text-slate-800 pl-4 border-l-4 border-indigo-200">{quote}</p>
+                        <p key={i} className="text-lg font-medium text-slate-800 pl-4 border-l-4 border-emerald-200">{quote}</p>
                       ))}
                     </div>
                   </div>
                   <p className="text-slate-600 leading-relaxed">처음에는 사건을 그렇게 이해하려 합니다. 하지만 시간이 지나면 대부분 같은 질문에 다시 마주하게 됩니다.</p>
                   
-                  <div className="bg-[#1565C0] text-white p-10 rounded-[40px] shadow-xl">
-                    <h3 className="text-xl font-bold mb-8 text-blue-100">우리가 마주해야 할 질문들</h3>
+                  <div className="bg-primary-deep text-white p-10 rounded-[40px] shadow-xl">
+                    <h3 className="text-xl font-bold mb-8 text-emerald-100">우리가 마주해야 할 질문들</h3>
                     <ul className="space-y-6">
                       {[
                         "왜 그 순간에 멈추지 못했는가.",
@@ -3153,7 +3166,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                         "다시 같은 상황이 오면 나는 통제할 수 있는가."
                       ].map((q, i) => (
                         <li key={i} className="flex gap-4 items-start">
-                          <span className="w-6 h-6 rounded-full bg-blue-700 flex items-center justify-center shrink-0 text-xs">{i+1}</span>
+                          <span className="w-6 h-6 rounded-full bg-emerald-700 flex items-center justify-center shrink-0 text-xs">{i+1}</span>
                           <p className="text-lg leading-tight">{q}</p>
                         </li>
                       ))}
@@ -3193,7 +3206,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     "딥페이크 및 합성물 관련 문제"
                   ].map((item, i) => (
                     <div key={i} className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-indigo-500" />
+                      <div className="w-2 h-2 rounded-full bg-emerald-500" />
                       <span className="text-slate-700 font-medium">{item}</span>
                     </div>
                   ))}
@@ -3206,7 +3219,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                       { title: "자극", color: "bg-rose-50 text-rose-600" },
                       { title: "충동적인 행동", color: "bg-orange-50 text-orange-600" },
                       { title: "불안과 후회", color: "bg-slate-50 text-slate-600" },
-                      { title: "자기 합리화", color: "bg-indigo-50 text-indigo-600" },
+                      { title: "자기 합리화", color: "bg-emerald-50 text-emerald-600" },
                       { title: "다시 반복", color: "bg-rose-600 text-white" }
                     ].map((step, i, arr) => (
                       <React.Fragment key={i}>
@@ -3237,7 +3250,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                     { title: "즉각적 자극", icon: Zap }
                   ].map((item, i) => (
                     <div key={i} className="text-center p-4 bg-slate-50 rounded-2xl">
-                      <item.icon className="w-6 h-6 mx-auto mb-2 text-indigo-600" />
+                      <item.icon className="w-6 h-6 mx-auto mb-2 text-emerald-600" />
                       <p className="text-xs font-bold text-slate-900">{item.title}</p>
                     </div>
                   ))}
@@ -3281,7 +3294,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   "비슷한 상황이 다시 오면 어떻게 다르게 대응할 것인가"
                 ].map((q, i) => (
                   <div key={i} className="p-6 bg-white rounded-2xl border border-slate-100 flex gap-4">
-                    <HelpCircle className="w-6 h-6 text-[#1565C0] shrink-0" />
+                    <HelpCircle className="w-6 h-6 text-emerald-600 shrink-0" />
                     <p className="font-medium">{q}</p>
                   </div>
                 ))}
@@ -3299,13 +3312,13 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                   { title: "공감 능력 회복", icon: Users },
                   { title: "재발 방지 계획 수립", icon: ClipboardCheck }
                 ].map((item, i) => (
-                  <div key={i} className="p-6 bg-slate-50 rounded-3xl text-center hover:bg-indigo-50 transition-colors group">
-                    <item.icon className="w-8 h-8 mx-auto mb-4 text-indigo-600 group-hover:scale-110 transition-transform" />
+                  <div key={i} className="p-6 bg-slate-50 rounded-3xl text-center hover:bg-emerald-50 transition-colors group">
+                    <item.icon className="w-8 h-8 mx-auto mb-4 text-emerald-600 group-hover:scale-110 transition-transform" />
                     <p className="font-bold text-slate-900 text-sm leading-tight">{item.title}</p>
                   </div>
                 ))}
               </div>
-              <p className="mt-12 text-center text-lg text-slate-600">단순한 다짐이 아니라 <span className="text-indigo-600 font-bold">행동 시스템을 재설계하는 과정</span>입니다.</p>
+              <p className="mt-12 text-center text-lg text-slate-600">단순한 다짐이 아니라 <span className="text-emerald-600 font-bold">행동 시스템을 재설계하는 과정</span>입니다.</p>
             </div>
 
             {/* 6. 지금이 가장 중요한 시점입니다 */}
@@ -3314,12 +3327,12 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
                 <h2 className="text-3xl font-bold text-slate-900">지금이 가장 중요한 시점입니다</h2>
                 <div className="max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed space-y-4">
                   <p>스마트폰과 인터넷은 우리의 일상에서 사라지지 않습니다.</p>
-                  <p>중요한 것은 환경을 완전히 피하는 것이 아니라 <span className="font-bold text-indigo-600">그 안에서 스스로를 통제할 수 있는 힘</span>을 만드는 것입니다.</p>
+                  <p>중요한 것은 환경을 완전히 피하는 것이 아니라 <span className="font-bold text-emerald-600">그 안에서 스스로를 통제할 수 있는 힘</span>을 만드는 것입니다.</p>
                   <p>디지털 성범죄 상담은 낙인을 위한 과정이 아니라 다시는 같은 선택을 반복하지 않기 위한 준비 과정입니다.</p>
                 </div>
               </div>
 
-              <div className="bg-[#1565C0] text-white p-12 rounded-[40px] shadow-xl relative overflow-hidden">
+              <div className="bg-primary-deep text-white p-12 rounded-[40px] shadow-xl relative overflow-hidden">
                 <div className="relative z-10 space-y-6">
                   <p className="text-2xl font-bold">혼자 해결하려 애쓰지 않으셔도 됩니다.</p>
                   <p className="text-4xl font-black">반복을 끝내고 싶다면,<br />지금이 변화의 시작이 될 수 있습니다.</p>
@@ -3380,7 +3393,7 @@ const TreatmentPage = ({ title, slug }: { title: string; slug: string }) => (
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 bg-[#4F46E5] text-white font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-lg shadow-indigo-200"
+            className="px-8 py-4 bg-[#059669] text-white font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-lg shadow-emerald-200"
           >
             온라인 상담 예약
           </a>
@@ -3475,14 +3488,14 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 border border-indigo-100 text-sm font-bold mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 text-sm font-bold mb-8"
             >
               <ShieldCheck className="w-4 h-4" />
               전문가 칼럼: 성범죄 재범방지 교육의 중요성
             </motion.div>
             <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-8 tracking-tight leading-[1.25] text-slate-900 max-w-[800px] mx-auto break-keep [text-wrap:balance]">
               부산 성범죄 재범방지 교육이 중요한 이유 : <br className="hidden sm:block" />
-              단순한 절차가 아니라 <span className="text-indigo-600">‘변화의 증거’</span>입니다
+              단순한 절차가 아니라 <span className="text-emerald-600">‘변화의 증거’</span>입니다
             </h1>
             <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed">
               사건 이후의 막막함, 변화를 향한 첫걸음이 당신의 미래를 결정합니다.
@@ -3495,7 +3508,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             
             {/* Empathy Section */}
             <section className="mb-20">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-indigo-500 pl-6">사건 이후 느끼는 불안과 혼란에 대하여</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-8 border-l-4 border-emerald-500 pl-6">사건 이후 느끼는 불안과 혼란에 대하여</h2>
               <div className="space-y-6 text-slate-600 leading-relaxed">
                 <p>성범죄 사건에 연루되면 많은 분들이 처음 겪는 상황에 큰 혼란을 느끼게 됩니다.</p>
                 <blockquote className="bg-slate-50 p-8 rounded-2xl border-none italic text-slate-700 font-medium">
@@ -3509,9 +3522,9 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             </section>
 
             {/* Actual Case Section */}
-            <section className="mb-20 bg-indigo-50/50 p-10 lg:p-16 rounded-[40px] border border-indigo-100">
+            <section className="mb-20 bg-emerald-50/50 p-10 lg:p-16 rounded-[40px] border border-emerald-100">
               <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <MessageSquare className="w-8 h-8 text-indigo-600" />
+                <MessageSquare className="w-8 h-8 text-emerald-600" />
                 실제 상담실 사례
               </h2>
               <div className="space-y-6 text-slate-600 leading-relaxed">
@@ -3519,7 +3532,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 <p>문을 열고 들어와 의자에 앉았지만 한동안 말을 하지 못했습니다. 손을 계속 만지작거리다가 한참 뒤에 겨우 입을 열었습니다.</p>
                 <p className="font-bold text-slate-900 text-xl">"지금 수사를 받고 있습니다."</p>
                 <p>그는 휴대폰과 관련된 성범죄 사건으로 조사를 받고 있는 상황이었습니다. 잠을 제대로 못 자고 있었고 회사에서도 일이 손에 잡히지 않는 상태였습니다. 상담을 시작하고 얼마 지나지 않아 그는 이렇게 물었습니다.</p>
-                <p className="bg-white p-6 rounded-xl border border-indigo-200 font-bold text-indigo-700 text-center">"지금 제가 뭘 해야 합니까?"</p>
+                <p className="bg-white p-6 rounded-xl border border-emerald-200 font-bold text-emerald-700 text-center">"지금 제가 뭘 해야 합니까?"</p>
                 <p><strong>성범죄 사건 상담</strong>을 겪게 되면 많은 사람들이 막막함 때문에 아무 준비도 하지 못한 채 시간을 보내는 경우가 많습니다. 하지만 재판 과정에서는 사건 자체뿐 아니라 사건 이후 어떤 태도를 보였는지도 중요한 판단 요소가 됩니다.</p>
               </div>
             </section>
@@ -3527,22 +3540,22 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             {/* Judge's Perspective Section */}
             <section className="mb-20">
               <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <Gavel className="w-8 h-8 text-indigo-600" />
+                <Gavel className="w-8 h-8 text-emerald-600" />
                 판사가 실제로 중요하게 보는 것
               </h2>
               <div className="space-y-6 text-slate-600 leading-relaxed">
                 <p>재판에서는 단순히 사건 사실만 보는 것이 아닙니다. 다음과 같은 부분이 함께 판단됩니다.</p>
                 <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 list-none p-0">
                   <li className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center">
-                    <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">1</div>
+                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">1</div>
                     <span className="font-bold text-slate-900">사건 이후 어떤 노력을 했는지</span>
                   </li>
                   <li className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center">
-                    <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">2</div>
+                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">2</div>
                     <span className="font-bold text-slate-900">자신의 행동을 어떻게 인식하고 있는지</span>
                   </li>
                   <li className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center">
-                    <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">3</div>
+                    <div className="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">3</div>
                     <span className="font-bold text-slate-900">재범 가능성이 얼마나 낮은지</span>
                   </li>
                 </ul>
@@ -3553,7 +3566,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             {/* Why Education is Important Section */}
             <section className="mb-20">
               <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <BookOpen className="w-8 h-8 text-indigo-600" />
+                <BookOpen className="w-8 h-8 text-emerald-600" />
                 재범방지 교육이 중요한 이유
               </h2>
               <div className="space-y-6 text-slate-600 leading-relaxed">
@@ -3564,22 +3577,22 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 </blockquote>
                 <p>하지만 상담과 교육을 진행하다 보면 자신의 행동이 상대방에게 어떤 영향을 줄 수 있었는지, 그리고 왜 그런 행동이 반복될 수 있는지에 대해 점차 이해하게 됩니다. 이 과정은 단순한 반성이 아니라 재발을 막기 위한 인식의 변화 과정입니다.</p>
                 <div className="bg-slate-50 text-slate-900 p-10 rounded-[32px] my-12 border border-slate-100">
-                  <h4 className="text-xl font-bold mb-6 text-[#1565C0]">재범방지 교육의 주요 내용</h4>
+                  <h4 className="text-xl font-bold mb-6 text-[#059669]">재범방지 교육의 주요 내용</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#1565C0]" />
+                      <CheckCircle2 className="w-5 h-5 text-[#059669]" />
                       <span>성 인식 교정</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#1565C0]" />
+                      <CheckCircle2 className="w-5 h-5 text-[#059669]" />
                       <span>충동 조절 훈련</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#1565C0]" />
+                      <CheckCircle2 className="w-5 h-5 text-[#059669]" />
                       <span>관계 인식 개선</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#1565C0]" />
+                      <CheckCircle2 className="w-5 h-5 text-[#059669]" />
                       <span>재발 위험 상황 관리</span>
                     </div>
                   </div>
@@ -3594,7 +3607,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
               <div className="space-y-6 text-slate-600 leading-relaxed">
                 <p>앞서 상담했던 내담자는 교육 과정 동안 <strong>성 인식 교육, 충동 행동 분석, 사건 상황 정리, 재발 방지 계획</strong>을 하나씩 정리했습니다.</p>
                 <p>교육 과정에서 작성한 기록과 상담 소견서는 변호사를 통해 법원에 <strong>성범죄 양형자료</strong>로 제출되었습니다. 재판부에서는 사건 내용뿐 아니라 사건 이후의 태도와 재범 방지를 위한 노력을 함께 확인했습니다.</p>
-                <p className="text-lg font-bold text-indigo-700">그 결과 그는 예상했던 것보다 완화된 결과를 받을 수 있었습니다.</p>
+                <p className="text-lg font-bold text-emerald-700">그 결과 그는 예상했던 것보다 완화된 결과를 받을 수 있었습니다.</p>
                 <p>재판이 끝난 후 그는 상담실에 다시 찾아와 이렇게 말했습니다.</p>
                 <p className="italic font-medium text-slate-800">"그때 상담을 시작하지 않았으면 아무 준비도 못 했을 것 같습니다."</p>
               </div>
@@ -3603,13 +3616,13 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
             {/* FAQ Section */}
             <section className="mb-20">
               <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <HelpCircle className="w-8 h-8 text-indigo-600" />
+                <HelpCircle className="w-8 h-8 text-emerald-600" />
                 많은 분들이 궁금해하는 질문
               </h2>
               <div className="space-y-8">
                 <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
                   <h4 className="text-xl font-bold text-slate-900 mb-4 flex items-start gap-3">
-                    <span className="text-indigo-600">Q.</span>
+                    <span className="text-emerald-600">Q.</span>
                     교육을 받으면 형량이 줄어드나요?
                   </h4>
                   <p className="text-slate-600 leading-relaxed pl-8">
@@ -3618,7 +3631,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 </div>
                 <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
                   <h4 className="text-xl font-bold text-slate-900 mb-4 flex items-start gap-3">
-                    <span className="text-indigo-600">Q.</span>
+                    <span className="text-emerald-600">Q.</span>
                     교육 자료는 어디에 제출하나요?
                   </h4>
                   <p className="text-slate-600 leading-relaxed pl-8">
@@ -3639,9 +3652,9 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
 
             {/* Counseling Guide & Closing */}
             <section className="mt-32 pt-20 border-t border-slate-200">
-              <div className="bg-[#1565C0] rounded-[48px] p-12 lg:p-20 text-white text-center shadow-2xl shadow-blue-200">
+              <div className="bg-primary-deep rounded-[48px] p-12 lg:p-20 text-white text-center shadow-2xl shadow-emerald-200">
                 <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">당신의 변화를 위한 가장 객관적인 조력자가 되겠습니다</h2>
-                <p className="text-xl text-blue-100 mb-12 leading-relaxed">
+                <p className="text-xl text-emerald-100 mb-12 leading-relaxed">
                   사건 이후 무엇을 해야 할지 막막한 경우 상담이 도움이 될 수 있습니다.<br />
                   전문가 상담을 통해 재범 방지와 심리적 정리를 함께 할 수 있습니다.<br />
                   모든 상담 내용은 철저히 비밀보장이 되니 안심하고 문의해 주시기 바랍니다.
@@ -3651,14 +3664,14 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                     href={NAVER_PLACE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-10 py-5 bg-white text-[#1565C0] text-lg font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center gap-3"
+                    className="px-10 py-5 bg-white text-[#059669] text-lg font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center gap-3"
                   >
                     상담 예약하기
                     <ArrowRight className="w-5 h-5" />
                   </a>
                   <a 
                     href={`tel:${CONTACT_PHONE}`}
-                    className="px-10 py-5 bg-blue-500 text-white text-lg font-bold rounded-2xl hover:bg-blue-400 transition-all flex items-center gap-3 border border-blue-400"
+                    className="px-10 py-5 bg-emerald-600 text-white text-lg font-bold rounded-2xl hover:bg-emerald-500 transition-all flex items-center gap-3 border border-emerald-500"
                   >
                     전화 문의하기 ({CONTACT_PHONE})
                     <PhoneCall className="w-5 h-5" />
@@ -3776,7 +3789,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                     }
                   ].map((item, idx) => (
                     <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-                      <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+                      <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-primary-deep group-hover:text-white transition-colors">
                         <item.icon className="w-6 h-6" />
                       </div>
                       <h3 className="text-lg font-bold text-slate-900 mb-4 leading-tight">{item.title}</h3>
@@ -3854,7 +3867,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-12 py-6 bg-[#1565C0] text-white text-xl font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-xl shadow-blue-100"
+              className="inline-flex items-center gap-3 px-12 py-6 bg-primary-deep text-white text-xl font-bold rounded-2xl hover:bg-emerald-900 transition-all shadow-xl shadow-emerald-100"
             >
               상담 문의하기
               <ArrowRight className="w-6 h-6" />
@@ -3966,7 +3979,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 }
               ].map((item, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-primary-deep group-hover:text-white transition-colors">
                     <item.icon className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-4 leading-tight">{item.title}</h3>
@@ -4038,7 +4051,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 href={NAVER_PLACE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-12 py-6 bg-[#1565C0] text-white text-xl font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100"
+                className="inline-flex items-center gap-3 px-12 py-6 bg-primary-deep text-white text-xl font-bold rounded-2xl hover:bg-emerald-900 transition-all shadow-2xl shadow-emerald-100"
               >
                 상담 문의하기
                 <ArrowRight className="w-6 h-6" />
@@ -4137,7 +4150,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 }
               ].map((item, idx) => (
                 <div key={idx} className="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-8 group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-8 group-hover:bg-primary-deep group-hover:text-white transition-colors">
                     <item.icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
@@ -4196,7 +4209,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-12 py-6 bg-[#1565C0] text-white text-xl font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100"
+              className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100"
             >
               상담 문의하기
               <ArrowRight className="w-6 h-6" />
@@ -4217,7 +4230,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
         {/* 1. 히어로 섹션 (상단 인트로) */}
         <header className="bg-slate-50 py-[110px] px-6 text-center border-b border-slate-100">
           <div className="max-w-[860px] mx-auto">
-            <p className="text-[14px] md:text-[15px] font-semibold tracking-[0.05em] text-indigo-600 mb-[16px] uppercase">
+            <p className="text-[14px] md:text-[15px] font-semibold tracking-[0.05em] text-emerald-600 mb-[16px] uppercase">
               재범방지 교육 · 관계 인식 교육 · 성인지 감수성 교육
             </p>
             <h1 className="text-[34px] md:text-[52px] font-bold text-slate-900 mb-[28px] leading-[1.2] tracking-tight max-w-[620px] mx-auto break-keep">
@@ -4260,7 +4273,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
                 { title: "사회적 관계 속 행동 기준", icon: Gavel }
               ].map((item, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-md transition-all text-center group">
-                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 mx-auto group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 mx-auto group-hover:bg-primary-deep group-hover:text-white transition-colors">
                     <item.icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 leading-tight">{item.title}</h3>
@@ -4417,7 +4430,7 @@ const EducationPage = ({ title, slug }: { title: string; slug: string }) => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-12 py-6 bg-[#1565C0] text-white text-xl font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100"
+              className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100"
             >
               상담 문의하기
               <ArrowRight className="w-6 h-6" />
@@ -4510,7 +4523,7 @@ const CoachingPage = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-base font-bold mb-8 shadow-sm"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-base font-bold mb-8 shadow-sm"
         >
           <PenTool className="w-5 h-5" />
           진정성 있는 반성을 위한 전문 가이드
@@ -4577,7 +4590,7 @@ const CoachingPage = () => (
               { step: "03", title: "구조적 흐름 설계", desc: "논리적이고 설득력 있는 글의 흐름을 설계하고 표현을 다듬습니다." }
             ].map((item, idx) => (
               <div key={idx} className="p-10 rounded-[40px] bg-white border border-slate-100 shadow-sm relative overflow-hidden group">
-                <div className="text-6xl font-black text-slate-50 absolute -top-4 -right-4 group-hover:text-indigo-50 transition-colors">{item.step}</div>
+                <div className="text-6xl font-black text-slate-50 absolute -top-4 -right-4 group-hover:text-emerald-50 transition-colors">{item.step}</div>
                 <h4 className="text-xl font-bold text-slate-900 mb-4 relative z-10">{item.title}</h4>
                 <p className="text-slate-500 text-sm leading-relaxed relative z-10">{item.desc}</p>
               </div>
@@ -4595,7 +4608,7 @@ const CoachingPage = () => (
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-[#4F46E5] text-white font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-lg"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-[#059669] text-white font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-lg shadow-emerald-100"
           >
             코칭 상담 예약하기
             <ArrowRight className="w-6 h-6" />
@@ -4627,7 +4640,7 @@ const CollaborationPage = () => (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-sm font-bold mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-sm font-bold mb-8"
           >
             <ShieldCheck className="w-4 h-4" />
             법적 절차를 이해하는 성범죄 사건 전문 심리상담
@@ -4678,7 +4691,7 @@ const CollaborationPage = () => (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {['경찰 조사', '검찰 조사', '재판 과정'].map((item, idx) => (
                 <div key={idx} className="p-6 rounded-2xl bg-slate-50 border border-slate-100 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">{idx + 1}</div>
+                  <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">{idx + 1}</div>
                   <span className="font-bold text-slate-900">{item}</span>
                 </div>
               ))}
@@ -4700,16 +4713,16 @@ const CollaborationPage = () => (
                 "재범 방지 노력, 심리상담 참여, 자기이해 및 행동 변화 내용을 자료화하는 과정 지원"
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                  <CheckCircle2 className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <span className="text-sm font-medium text-slate-700">{text}</span>
                 </div>
               ))}
             </div>
-            <div className="p-8 bg-indigo-50 rounded-3xl border border-indigo-100">
-              <p className="text-lg font-bold text-indigo-900 mb-4">
+            <div className="p-8 bg-emerald-50 rounded-3xl border border-emerald-100">
+              <p className="text-lg font-bold text-emerald-900 mb-4">
                 본 센터는 단순히 심리적 위로만 제공하는 곳이 아니라, 경찰 조사, 검찰 조사, 재판 과정에 대한 이해를 바탕으로 절차별 심리 대응과 양형자료 정리까지 함께 고려할 수 있는 상담센터입니다.
               </p>
-              <p className="text-indigo-600 font-bold">이 부분은 일반적인 심리상담센터와 매우 큰 차이점입니다.</p>
+              <p className="text-emerald-600 font-bold">이 부분은 일반적인 심리상담센터와 매우 큰 차이점입니다.</p>
             </div>
           </div>
         </div>
@@ -4738,7 +4751,7 @@ const CollaborationPage = () => (
               <p>이 과정은 단순히 상담 기록을 남기는 차원을 넘어, 사건 이후 어떤 태도와 변화가 있었는지를 보다 체계적으로 정리하는 과정이 될 수 있습니다.</p>
             </div>
             <div className="mt-12 p-8 bg-slate-50 rounded-3xl text-slate-900 border border-slate-100">
-              <p className="text-xl font-bold text-[#1565C0]">“상담 + 법적 이해 + 절차별 자료 정리”</p>
+              <p className="text-xl font-bold text-[#059669]">“상담 + 법적 이해 + 절차별 자료 정리”</p>
               <p className="text-slate-500 mt-2">본 센터가 지향하는 통합적 상담 시스템의 핵심 구조입니다.</p>
             </div>
           </div>
@@ -4758,7 +4771,7 @@ const CollaborationPage = () => (
             <p>성범죄 사건은 일반적인 심리 상담과는 다르게 법적 절차와 함께 진행되는 경우가 많습니다.</p>
             <p>따라서 사건 경험이 없는 일반적인 심리상담만으로는 현재의 복합적인 상황을 충분히 이해하고 정리하는 데 한계가 있을 수 있습니다.</p>
             <p>본 센터는 성범죄 사건 상담 경험, 경찰·검찰·재판 절차에 대한 이해, 변호사 협업 경험, 절차에 따른 양형자료 방향 정리에 대한 이해를 함께 갖추고 있습니다.</p>
-            <p className="text-indigo-600 font-bold">이러한 점은 본 센터가 일반 심리상담센터와 구별되는 중요한 강점입니다.</p>
+            <p className="text-emerald-600 font-bold">이러한 점은 본 센터가 일반 심리상담센터와 구별되는 중요한 강점입니다.</p>
           </div>
         </div>
       </div>
@@ -4800,7 +4813,7 @@ const CollaborationPage = () => (
             }
           ].map((card, idx) => (
             <div key={idx} className="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-all group">
-              <div className="w-14 h-14 rounded-2xl bg-slate-50 text-indigo-600 flex items-center justify-center mb-8 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                 <card.icon className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-4">{card.title}</h3>
@@ -4826,7 +4839,7 @@ const CollaborationPage = () => (
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-12 py-6 bg-[#1565C0] text-white text-xl font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100"
+            className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100"
           >
             상담 문의하기
             <ArrowRight className="w-6 h-6" />
@@ -4858,7 +4871,7 @@ const LegalPage = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-base font-bold mb-8 shadow-sm"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 text-base font-bold mb-8 shadow-sm"
         >
           <ShieldCheck className="w-5 h-5" />
           성범죄 사건 심리상담 및 양형자료 지원 서비스 안내
@@ -4879,7 +4892,7 @@ const LegalPage = () => (
           { title: "반성문 코칭", desc: "책임 인식을 바탕으로 한 진정성 있는 진술 가이드", icon: MessageSquare }
         ].map((item, idx) => (
           <div key={idx} className="bg-white p-10 rounded-3xl shadow-xl border border-slate-100 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center mx-auto mb-8">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-8">
               <item.icon className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
@@ -4898,7 +4911,7 @@ const LegalPage = () => (
               <h2 className="text-3xl font-bold text-slate-900 mb-8">성범죄 사건 이후, 가장 중요한 것은 “사건 이후의 태도”입니다</h2>
               <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
                 <p>성범죄 사건에 연루된 많은 분들이 처음 겪는 상황 속에서 큰 혼란을 경험합니다. 수사 과정에서 무엇을 준비해야 하는지, 재판에서 어떤 부분이 중요하게 판단되는지 알기 어렵기 때문입니다.</p>
-                <p>하지만 실제 재판 과정에서는 단순히 사건의 사실관계만 보는 것이 아니라 <span className="text-indigo-600 font-bold">사건 이후 피고인이 어떤 태도와 노력을 보였는지</span>도 중요한 판단 요소로 작용합니다.</p>
+                <p>하지만 실제 재판 과정에서는 단순히 사건의 사실관계만 보는 것이 아니라 <span className="text-emerald-600 font-bold">사건 이후 피고인이 어떤 태도와 노력을 보였는지</span>도 중요한 판단 요소로 작용합니다.</p>
                 
                 <div className="mt-8 p-8 bg-slate-50 rounded-3xl border border-slate-100">
                   <h4 className="font-bold text-slate-900 mb-4">주요 검토 사항</h4>
@@ -4911,7 +4924,7 @@ const LegalPage = () => (
                       "주변의 관리와 변화 의지"
                     ].map((text, i) => (
                       <li key={i} className="flex items-center gap-3 text-sm">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-500 shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                         {text}
                       </li>
                     ))}
@@ -4933,7 +4946,7 @@ const LegalPage = () => (
 
         {/* 2. 왜 심리상담 기반의 양형 자료가 필요한가 */}
         <section className="bg-slate-50 rounded-[48px] p-12 lg:p-20 text-slate-900 relative overflow-hidden border border-slate-200">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-100/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           <div className="max-w-4xl mx-auto relative z-10">
             <h2 className="text-3xl lg:text-4xl font-bold mb-12 text-center">왜 심리상담 기반의 양형 자료가 필요한가</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -4953,10 +4966,10 @@ const LegalPage = () => (
               </div>
               <div className="space-y-6">
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  중요한 것은 <span className="text-indigo-600 font-bold">내용의 진정성과 논리적인 설명</span>입니다.
+                  중요한 것은 <span className="text-emerald-600 font-bold">내용의 진정성과 논리적인 설명</span>입니다.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed">
-                  심리상담 기반 자료는 단순한 개인 의견이 아니라 <span className="underline decoration-indigo-300 underline-offset-4">전문 상담 과정에서 정리된 객관적인 기록</span>이라는 점에서 큰 의미가 있습니다.
+                  심리상담 기반 자료는 단순한 개인 의견이 아니라 <span className="underline decoration-emerald-300 underline-offset-4">전문 상담 과정에서 정리된 객관적인 기록</span>이라는 점에서 큰 의미가 있습니다.
                 </p>
                 <p className="text-lg text-slate-600 leading-relaxed">
                   상담 과정에서 드러난 심리 상태와 변화 과정, 재발 방지 계획 등이 정리되면 사건 이후의 태도를 보다 명확하게 설명할 수 있습니다.
@@ -4980,7 +4993,7 @@ const LegalPage = () => (
               { title: "교육 확인서", desc: "성인지 및 재발방지 교육 이수 증명", icon: GraduationCap }
             ].map((item, idx) => (
               <div key={idx} className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all text-center">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
                   <item.icon className="w-6 h-6" />
                 </div>
                 <h4 className="font-bold text-slate-900 mb-2">{item.title}</h4>
@@ -4998,21 +5011,21 @@ const LegalPage = () => (
           <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">최근 성범죄 처벌 경향 및 특징</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-10 rounded-[40px] bg-white border border-slate-100 shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8">
                 <Scale className="w-6 h-6" />
               </div>
               <h4 className="font-bold text-slate-900 mb-4">판단 기준의 확대</h4>
-              <p className="text-sm text-slate-500 leading-relaxed">과거에는 물리적 강제력이 중심이었지만, 현재는 <span className="font-bold text-indigo-600">상대방의 성적 자기결정권 침해 여부</span>가 핵심 기준입니다.</p>
+              <p className="text-sm text-slate-500 leading-relaxed">과거에는 물리적 강제력이 중심이었지만, 현재는 <span className="font-bold text-emerald-600">상대방의 성적 자기결정권 침해 여부</span>가 핵심 기준입니다.</p>
             </div>
             <div className="p-10 rounded-[40px] bg-white border border-slate-100 shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8">
                 <Monitor className="w-6 h-6" />
               </div>
               <h4 className="font-bold text-slate-900 mb-4">디지털 성범죄 강화</h4>
               <p className="text-sm text-slate-500 leading-relaxed">통매음, 불법 촬영, 몰카, 딥페이크, 온라인 괴롭힘 등 디지털 환경의 침해를 폭넓게 처벌합니다.</p>
             </div>
             <div className="p-10 rounded-[40px] bg-white border border-slate-100 shadow-sm">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8">
                 <Users className="w-6 h-6" />
               </div>
               <h4 className="font-bold text-slate-900 mb-4">아청법 처벌 강화</h4>
@@ -5020,7 +5033,7 @@ const LegalPage = () => (
             </div>
           </div>
           <div className="mt-12 text-center text-slate-600">
-            <p>법적 기준이 강화될수록 <span className="font-bold text-indigo-600">사건 이후의 태도와 변화 노력</span>에 대한 평가가 더욱 중요해집니다.</p>
+            <p>법적 기준이 강화될수록 <span className="font-bold text-emerald-600">사건 이후의 태도와 변화 노력</span>에 대한 평가가 더욱 중요해집니다.</p>
           </div>
         </section>
 
@@ -5052,7 +5065,7 @@ const LegalPage = () => (
                 href={NAVER_PLACE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-[#1565C0] text-white font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-primary-deep text-white font-bold rounded-2xl hover:bg-emerald-900 transition-all shadow-2xl shadow-emerald-100"
               >
                 전문 상담 및 자료 준비 시작하기
                 <ArrowRight className="w-6 h-6" />
@@ -5074,12 +5087,12 @@ const LegalPage = () => (
             { title: "성차별 교육", href: "/legal/education/discrimination", desc: "평등한 성 역할과 차별 해소" }
           ].map((edu, idx) => (
             <Link key={idx} to={edu.href} className="group bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">{edu.title}</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-6">{edu.desc}</p>
-              <div className="text-[#4F46E5] text-sm font-bold flex items-center gap-1">
+              <div className="text-emerald-600 text-sm font-bold flex items-center gap-1">
                 상세보기 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
@@ -5101,7 +5114,7 @@ const LegalAssessmentPage = () => {
       <section className="py-[120px] px-6 bg-gradient-to-b from-slate-50 to-white border-b border-slate-100 text-center">
         <div className="max-w-[960px] mx-auto">
           <div className="max-w-[820px] mx-auto">
-            <p className="text-[14px] md:text-[15px] font-semibold tracking-[0.05em] text-indigo-600 mb-[18px] uppercase">
+            <p className="text-[14px] md:text-[15px] font-semibold tracking-[0.05em] text-emerald-600 mb-[18px] uppercase">
               전문 성심리상담 · 재범방지 교육 · 법원 제출 상담 소견서
             </p>
             <h1 className="text-[28px] sm:text-[32px] md:text-[48px] lg:text-[54px] font-bold md:font-extrabold leading-[1.35] md:leading-[1.24] tracking-tight text-slate-900 mb-[30px] max-w-[900px] mx-auto break-keep">
@@ -5214,7 +5227,7 @@ const LegalAssessmentPage = () => {
                   "5. 재범 위험성 및 향후 관리 방향 평가"
                 ].map((step, i) => (
                   <div key={i} className="p-6 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-4">
-                    <span className="w-10 h-10 rounded-full bg-[#1565C0] text-white flex items-center justify-center font-bold shrink-0">{i+1}</span>
+                    <span className="w-10 h-10 rounded-full bg-primary-deep text-white flex items-center justify-center font-bold shrink-0">{i+1}</span>
                     <span className="text-slate-800 font-medium">{step.substring(3)}</span>
                   </div>
                 ))}
@@ -5263,13 +5276,13 @@ const LegalAssessmentPage = () => {
 
       {/* 4. 상담 문의 버튼 */}
       <section className="py-24 lg:py-32 bg-slate-50 text-slate-900 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-12">상담은 현재를 정리하고 앞으로를 준비하는 과정입니다</h2>
           <a 
             href={NAVER_PLACE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-12 py-6 bg-[#4F46E5] text-white text-xl font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-xl"
+            className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-xl shadow-emerald-100"
           >
             상담 문의하기
             <ArrowRight className="w-6 h-6" />
@@ -5331,7 +5344,7 @@ const NoticePage = () => {
               href={externalNoticeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-[#1565C0] text-white font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-lg shadow-blue-200 active:scale-95 text-center"
+              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 active:scale-95 text-center"
             >
               공지사항 바로가기
             </a>
@@ -5344,21 +5357,21 @@ const NoticePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
             <div className="text-center p-6 md:p-8 rounded-3xl md:rounded-[40px] bg-[#f7f9fb] border border-slate-100 shadow-sm">
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-[#1565C0] flex items-center justify-center mx-auto mb-6 shadow-md">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-md">
                 <Monitor className="w-7 h-7 md:w-8 md:h-8" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3 break-keep">센터 운영 공지</h3>
               <p className="text-slate-500 leading-relaxed break-keep">상담 일정 변경, 휴무 안내 등</p>
             </div>
             <div className="text-center p-6 md:p-8 rounded-3xl md:rounded-[40px] bg-[#f7f9fb] border border-slate-100 shadow-sm">
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-[#1565C0] flex items-center justify-center mx-auto mb-6 shadow-md">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-md">
                 <Calendar className="w-7 h-7 md:w-8 md:h-8" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3 break-keep">교육 프로그램 일정</h3>
               <p className="text-slate-500 leading-relaxed break-keep">재범방지 교육 및 상담 프로그램 일정 안내</p>
             </div>
             <div className="text-center p-6 md:p-8 rounded-3xl md:rounded-[40px] bg-[#f7f9fb] border border-slate-100 shadow-sm">
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-[#1565C0] flex items-center justify-center mx-auto mb-6 shadow-md">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white text-emerald-600 flex items-center justify-center mx-auto mb-6 shadow-md">
                 <MessageSquare className="w-7 h-7 md:w-8 md:h-8" />
               </div>
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-3 break-keep">상담 관련 안내</h3>
@@ -5382,7 +5395,7 @@ const NoticePage = () => {
               href={externalNoticeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#1565C0] font-bold hover:underline text-base md:text-lg"
+              className="inline-flex items-center gap-2 text-emerald-600 font-bold hover:underline text-base md:text-lg"
             >
               공지사항 바로가기 <ArrowRight className="w-5 h-5" />
             </a>
@@ -5404,14 +5417,14 @@ const NoticePage = () => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-[#1565C0] text-white font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-lg shadow-blue-200 active:scale-95 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-emerald-600 text-white font-bold rounded-2xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-100 active:scale-95 flex items-center justify-center gap-2"
             >
               <Calendar className="w-5 h-5" />
               예약하기
             </a>
             <a 
               href={`tel:${CONTACT_PHONE}`}
-              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-[#1565C0] text-white font-bold rounded-2xl hover:bg-[#115599] transition-all shadow-lg shadow-blue-100 active:scale-95 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-primary-deep text-white font-bold rounded-2xl hover:bg-emerald-900 transition-all shadow-lg shadow-emerald-100 active:scale-95 flex items-center justify-center gap-2"
             >
               <PhoneCall className="w-5 h-5" />
               전화상담 ({CONTACT_PHONE})
@@ -5573,10 +5586,10 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-white min-h-screen"
+        className="bg-white min-h-screen selection:bg-emerald-200 selection:text-emerald-900"
       >
         {/* 1. Hero Section */}
-        <header className="relative bg-slate-50 py-24 lg:py-32 text-slate-900 overflow-hidden border-b border-slate-200">
+        <header className="relative bg-gradient-to-b from-emerald-50/20 to-white py-24 lg:py-32 text-slate-900 overflow-hidden border-b border-emerald-500/10">
           <div className="absolute inset-0 opacity-10">
             <img 
               src="https://9tsiiw6i9140.edge.naverncp.com/files/sgrsoft/202603/108dc8a54f0375a15fc274ee25a9311f.png" 
@@ -5587,8 +5600,14 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
           </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-8 tracking-tight leading-tight">센터 소개</h1>
-              <p className="text-xl text-slate-500 leading-relaxed">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-xs sm:text-sm font-bold mb-6 tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                성범죄 특화 심리치료 전문 기관
+              </div>
+              <h1 className="text-4xl lg:text-6xl font-black mb-8 tracking-tight leading-tight text-slate-900">
+                센터 <span className="text-emerald-600">소개</span>
+              </h1>
+              <p className="text-xl text-slate-500 leading-relaxed font-bold break-keep">
                 부산성범죄심리상담치료센터는 단순한 비난이 아닌 실질적인 교정을 통해 재범 없는 안전한 사회를 만듭니다.
               </p>
             </div>
@@ -5600,7 +5619,10 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-8">사건을 이해하는 전문 심리상담</h2>
+                <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs sm:text-sm mb-4 block">Our Approach</span>
+                <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-8">
+                  사건을 이해하는 <span className="text-emerald-600">전문 심리상담</span>
+                </h2>
                 <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
                   <p>본 센터는 성범죄 사건과 관련된 심리상담을 전문적으로 진행하는 상담기관입니다.</p>
                   <p>
@@ -5609,11 +5631,11 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                   </p>
                   <p>이러한 이유로 성범죄 사건 상담은 일반적인 심리 상담과는 다른 접근이 필요합니다.</p>
                   <p>
-                    본 센터는 오랜 기간 성범죄 사건 상담을 진행하면서 다양한 사건 사례와 상담 경험을 축적해 왔으며, 사건 이후 내담자들이 실제로 겪는 심리적 혼란과 현실적인 문제를 함께 이해하고 정리하는 상담을 진행하고 있습니다.
+                    본 센터는 오랜 기간 성범죄 사건 상담을 진행하면서 다양한 사건 사례와 상담 경험을 축적해 왔으며, 사건 이후 내담자들이 실제로 겪는 심리적 혼란และ 현실적인 문제를 함께 이해하고 정리하는 상담을 진행하고 있습니다.
                   </p>
                 </div>
               </div>
-              <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
                 <img 
                   src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" 
                   alt="Counseling Session" 
@@ -5626,11 +5648,12 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
         </section>
 
         {/* 3. 센터 핵심 가치 섹션 */}
-        <section className="py-24 lg:py-32 bg-slate-50">
+        <section className="py-24 lg:py-32 bg-emerald-50/20 border-t border-emerald-500/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
-              <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">센터 핵심 가치</h2>
-              <p className="text-lg text-slate-500">우리가 지향하는 전문성과 변화의 방향입니다.</p>
+              <span className="text-emerald-600 font-bold tracking-widest uppercase text-xs sm:text-sm mb-4 block">Core Values</span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">센터 <span className="text-emerald-600">핵심 가치</span></h2>
+              <p className="text-lg text-emerald-600/80 font-medium font-bold">우리가 지향하는 전문성과 변화의 방향입니다.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
@@ -5655,11 +5678,11 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                   desc: "충동 조절, 자기 이해, 행동 패턴 점검 등을 통해 변화의 방향을 준비합니다."
                 }
               ].map((card, idx) => (
-                <div key={idx} className="bg-white p-10 rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl transition-all">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-8">
+                <div key={idx} className="bg-white p-10 rounded-[40px] shadow-sm border border-emerald-500/5 hover:border-emerald-500/15 hover:shadow-xl hover:shadow-emerald-900/5 transition-all group duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-colors duration-300">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">{card.title}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">{card.title}</h3>
                   <p className="text-slate-500 leading-relaxed text-sm">{card.desc}</p>
                 </div>
               ))}
@@ -5702,14 +5725,14 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
               </div>
               <div className="space-y-4">
                 <h3 className="text-3xl font-bold text-slate-900">윤영준 <span className="text-lg font-medium text-slate-500">원장</span></h3>
-                <p className="text-[#4F46E5] font-bold">상담학 박사 / 국제 임상최면치료사</p>
+                <p className="text-emerald-600 font-bold">상담학 박사 / 국제 임상최면치료사</p>
               </div>
             </div>
             
             <div className="lg:col-span-2 space-y-16">
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   학력 및 학위
                 </h3>
                 <ul className="space-y-3 text-slate-600">
@@ -5722,13 +5745,13 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section className="bg-slate-50/50 p-8 rounded-[32px] border border-slate-100">
                 <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   전문 자격 및 국제 인증
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                     <h4 className="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-indigo-500" />
+                      <Globe className="w-4 h-4 text-emerald-500" />
                       미국최면사고시위원회 (ACHE)
                     </h4>
                     <ul className="space-y-2 text-sm text-slate-600">
@@ -5740,7 +5763,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                   </div>
                   <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                     <h4 className="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider flex items-center gap-2">
-                      <BookOpen className="w-4 h-4 text-indigo-500" />
+                      <BookOpen className="w-4 h-4 text-emerald-500" />
                       미국 최면대학 (HCC)
                     </h4>
                     <ul className="space-y-2 text-sm text-slate-600">
@@ -5755,7 +5778,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                        <h4 className="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider flex items-center gap-2">
-                         <Zap className="w-4 h-4 text-indigo-500" />
+                         <Zap className="w-4 h-4 text-emerald-500" />
                          NLP 및 코칭
                        </h4>
                        <ul className="space-y-2 text-sm text-slate-600">
@@ -5763,12 +5786,12 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                           <li>• NLP 프로코치 (전문가)</li>
                        </ul>
                      </div>
-                     <div className="bg-[#1565C0] p-6 rounded-2xl shadow-xl shadow-blue-100 border border-blue-500">
+                     <div className="bg-primary-deep p-6 rounded-2xl shadow-xl shadow-emerald-100 border border-emerald-500">
                        <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider flex items-center gap-2">
-                         <ShieldCheck className="w-4 h-4 text-blue-200" />
+                         <ShieldCheck className="w-4 h-4 text-emerald-200" />
                          기타 전문 자격
                        </h4>
-                       <ul className="space-y-2 text-sm text-blue-50">
+                       <ul className="space-y-2 text-sm text-emerald-50">
                           <li>• 성폭력 전문 상담사</li>
                           <li>• 가정폭력 전문 상담사</li>
                           <li>• 뇌교육 상담사</li>
@@ -5780,7 +5803,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   주요 학회 및 활동
                 </h3>
                 <ul className="space-y-3 text-slate-600">
@@ -5794,7 +5817,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   수상 및 교수 활동
                 </h3>
                 <ul className="space-y-3 text-slate-600">
@@ -5806,7 +5829,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   강의 및 상담 경력
                 </h3>
                 <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
@@ -5818,9 +5841,9 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                     <h4 className="font-bold text-slate-800 mb-3">기업 및 관공서</h4>
                     <p>삼성, LG, 대우, 기아자동차, 웅진코웨이, SK가스 등 대기업 임직원 대상 심리 프로그램 진행. 경찰서(상주, 군위, 구미, 점촌), 구미시청 등 관공서 출강 및 상담.</p>
                   </div>
-                  <div className="p-6 rounded-2xl bg-indigo-50 border border-indigo-100">
-                    <h4 className="font-bold text-indigo-900 mb-3">공공 및 사회 활동 (성범죄 및 위기 상담 특화)</h4>
-                    <ul className="space-y-2 text-indigo-800">
+                  <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-100">
+                    <h4 className="font-bold text-emerald-900 mb-3">공공 및 사회 활동 (성범죄 및 위기 상담 특화)</h4>
+                    <ul className="space-y-2 text-emerald-800">
                       <li>• 부산가정법원 위탁보호위원</li>
                       <li>• 경북권 전경, 의경 담당 심리상담사</li>
                       <li>• 경북 소방대원 심리상담 및 교육</li>
@@ -5832,7 +5855,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
               </section>
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   저서 및 논문
                 </h3>
                 <div className="space-y-6 text-slate-600">
@@ -5867,7 +5890,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
             <div className="lg:col-span-1 lg:sticky lg:top-32">
               <div className="rounded-3xl overflow-hidden shadow-2xl mb-8">
                 <img 
-                  src="https://mhsjoy.mycafe24.com/wp-content/uploads/2024/05/KakaoTalk_20240521_123825759.jpg" 
+                  src="https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774347139/KakaoTalk_20240521_123825759_gslvpg.jpg" 
                   alt="소윤주 부원장" 
                   className="w-full aspect-square lg:aspect-[3/4] object-cover"
                   referrerPolicy="no-referrer"
@@ -5875,14 +5898,14 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
               </div>
               <div className="space-y-4">
                 <h3 className="text-3xl font-bold text-slate-900">소윤주 <span className="text-lg font-medium text-slate-500">부원장</span></h3>
-                <p className="text-[#4F46E5] font-bold">기능의학전문가 │ 최면전문가 │ 성상담 전문가</p>
+                <p className="text-emerald-600 font-bold">기능의학전문가 │ 최면전문가 │ 성상담 전문가</p>
               </div>
             </div>
             
             <div className="lg:col-span-2 space-y-16">
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   학력 및 약력
                 </h3>
                 <ul className="space-y-3 text-slate-600">
@@ -5897,7 +5920,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   주요 학회 활동
                 </h3>
                 <ul className="space-y-3 text-slate-600">
@@ -5912,7 +5935,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   방송활동 및 출강
                 </h3>
                 <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
@@ -5926,7 +5949,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <section>
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <div className="w-1.5 h-6 bg-[#4F46E5] rounded-full" />
+                  <div className="w-1.5 h-6 bg-emerald-600 rounded-full" />
                   저서 및 강의내용
                 </h3>
                 <div className="space-y-6 text-slate-600">
@@ -5981,19 +6004,19 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                 name: "윤영준 원장", 
                 role: "상담학 박사 / 국제 임상최면치료사", 
                 image: "https://tpqens1j9138.edge.naverncp.com/MNiExO50AC?src=https%3A%2F%2Fpage24.app%2Fapi%2Ffile%2FmodooImgPasre%3FsiteId%3Dcriminalmhs%26image_url%3Dhttps%3A%2F%2F9tsiiw6i9140.edge.naverncp.com%2Ffiles%2Fcriminalmhs%2F202507%2Ffffbec7c7fc9a06e84210f84e37366dc.jpg%26mcode%3D1112&type=m&w=1980&h=1980&ttype=png",
-                desc: "성범죄 상담 경력 10년 이상, 법원 촉탁 상담위원 역임."
+                desc: "성범죄 상담 경력 18년 이상, 법원 촉탁 상담위원 역임."
               },
               { 
                 name: "소윤주 부원장", 
                 role: "기능의학 / 최면 / 성상담 전문가", 
-                image: "https://mhsjoy.mycafe24.com/wp-content/uploads/2024/05/KakaoTalk_20240521_123825759.jpg",
+                image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774347139/KakaoTalk_20240521_123825759_gslvpg.jpg",
                 desc: "기능의학 기반의 심신 통합 치유 전문가."
               },
               { 
                 name: "허선무 변호사", 
-                role: "사법시험 54회 / 성범죄 전문 변호사", 
+                role: "법무법인 소울 변호사 / 성범죄 전문 변호사", 
                 image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774346463/member_view23_nnxzhn.jpg",
-                desc: "부산지방법원 조정위원 및 형사조정위원 역임, 성범죄 전문 법률 조력자."
+                desc: "창원지방법원 조정위원, 창원지방검찰청 형사조정위원 역임"
               }
             ].map((expert, idx) => (
               <div key={idx} className="text-center group">
@@ -6001,7 +6024,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                   <img src={expert.image} alt={expert.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-1">{expert.name}</h3>
-                <p className="text-sm text-[#4F46E5] font-bold mb-4">{expert.role}</p>
+                <p className="text-sm text-emerald-600 font-bold mb-4">{expert.role}</p>
                 <p className="text-xs text-slate-500 leading-relaxed px-8">{expert.desc}</p>
               </div>
             ))}
@@ -6039,7 +6062,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                     </a>
                     <a 
                       href={`tel:${CONTACT_PHONE}`}
-                      className="flex-1 px-8 py-4 bg-[#1565C0] text-white rounded-2xl font-bold text-center hover:bg-[#115599] transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-8 py-4 bg-primary-deep text-white rounded-2xl font-bold text-center hover:bg-emerald-900 transition-colors flex items-center justify-center gap-2"
                     >
                       <PhoneCall className="w-5 h-5" />
                       전화 문의하기 ({CONTACT_PHONE})
@@ -6239,7 +6262,7 @@ const FAQAccordionItem = ({ q, a, isOpen, onClick }: { q: string, a: string, isO
           >
             <div className="px-6 pb-6 pt-2 border-t border-slate-50">
               <div className="flex items-start gap-4">
-                <span className="text-[#1565C0] font-black text-xl shrink-0 mt-0.5">A.</span>
+                <span className="text-[#2E7D32] font-black text-xl shrink-0 mt-0.5">A.</span>
                 <div className="text-slate-600 leading-relaxed whitespace-pre-line text-[16px]">
                   {a}
                 </div>
@@ -6331,7 +6354,7 @@ const CounselingProcessPage = () => (
             }
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 group-hover:bg-[#059669] group-hover:text-white transition-colors">
                 <item.icon className="w-6 h-6" />
               </div>
               <div className="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">STEP {idx + 1}</div>
@@ -6361,7 +6384,7 @@ const CounselingProcessPage = () => (
           <div className="space-y-24">
             {/* 1단계 */}
             <section className="relative pl-12 border-l-2 border-slate-100">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#1565C0]" />
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#059669]" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">1단계 평가</h3>
               <p className="text-lg font-bold text-slate-700 mb-6">심리 상태 및 위험 요인 점검</p>
               <div className="space-y-6">
@@ -6370,7 +6393,7 @@ const CounselingProcessPage = () => (
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
                   {['현재 진행 중인 사건 상황', '심리 상태 점검', '행동 패턴 확인', '충동 조절 상태'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-slate-400" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -6382,7 +6405,7 @@ const CounselingProcessPage = () => (
 
             {/* 2단계 */}
             <section className="relative pl-12 border-l-2 border-slate-100">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#1565C0]" />
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#059669]" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">2단계 원인 분석</h3>
               <p className="text-lg font-bold text-slate-700 mb-6">행동의 심리적 배경 이해</p>
               <div className="space-y-6">
@@ -6391,7 +6414,7 @@ const CounselingProcessPage = () => (
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
                   {['사건 당시의 심리 상태', '행동의 심리적 기제', '반복 가능성이 있는 행동 패턴'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-slate-400" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -6403,7 +6426,7 @@ const CounselingProcessPage = () => (
 
             {/* 3단계 */}
             <section className="relative pl-12 border-l-2 border-slate-100">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#1565C0]" />
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#059669]" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">3단계 교정 개입</h3>
               <p className="text-lg font-bold text-slate-700 mb-6">인지 왜곡 교정 및 사고 전환</p>
               <div className="space-y-6">
@@ -6412,7 +6435,7 @@ const CounselingProcessPage = () => (
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
                   {['인지 왜곡 교정', '사고 전환', '상황 판단 훈련', '충동 인식 과정'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-slate-400" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -6425,7 +6448,7 @@ const CounselingProcessPage = () => (
 
             {/* 4단계 */}
             <section className="relative pl-12 border-l-2 border-slate-100">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#1565C0]" />
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#059669]" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">4단계 행동 훈련</h3>
               <p className="text-lg font-bold text-slate-700 mb-6">충동 조절 및 대안 행동 형성</p>
               <div className="space-y-6">
@@ -6435,7 +6458,7 @@ const CounselingProcessPage = () => (
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
                   {['충동 차단 훈련', '위험 상황 인식', '대안 행동 형성', '반복 행동 차단 전략'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-slate-400" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -6446,7 +6469,7 @@ const CounselingProcessPage = () => (
 
             {/* 5단계 */}
             <section className="relative pl-12 border-l-2 border-slate-100">
-              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#1565C0]" />
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#059669]" />
               <h3 className="text-2xl font-bold text-slate-900 mb-2">5단계 재발 방지</h3>
               <p className="text-lg font-bold text-slate-700 mb-6">변화 유지 및 양형자료 정리</p>
               <div className="space-y-6">
@@ -6455,7 +6478,7 @@ const CounselingProcessPage = () => (
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
                   {['재발 위험 요인 점검', '행동 변화 유지', '생활 패턴 관리', '지속적인 모니터링'].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 text-slate-700 font-medium">
-                      <CheckCircle2 className="w-5 h-5 text-slate-400" />
+                      <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       {item}
                     </li>
                   ))}
@@ -6518,7 +6541,7 @@ const CounselingProcessPage = () => (
           href={NAVER_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-12 py-6 bg-[#4F46E5] text-white text-xl font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-xl"
+          className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-xl"
         >
           상담 문의하기
           <ArrowRight className="w-6 h-6" />
@@ -6593,7 +6616,7 @@ const ConfidentialityPage = () => (
             }
           ].map((item, idx) => (
             <div key={idx} className="bg-white p-8 rounded-[32px] shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-[#1565C0] group-hover:text-white transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-[#059669] group-hover:text-white transition-colors">
                 <item.icon className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-4">{item.title}</h3>
@@ -6623,7 +6646,7 @@ const ConfidentialityPage = () => (
           <div className="space-y-24">
             <section>
               <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-1.5 h-6 bg-[#1565C0] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#059669] rounded-full" />
                 상담 내용은 외부에 공개되지 않습니다
               </h3>
               <div className="space-y-4">
@@ -6635,7 +6658,7 @@ const ConfidentialityPage = () => (
 
             <section>
               <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-1.5 h-6 bg-[#1565C0] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#059669] rounded-full" />
                 상담 기록은 보호된 방식으로 관리됩니다
               </h3>
               <div className="space-y-4">
@@ -6647,7 +6670,7 @@ const ConfidentialityPage = () => (
 
             <section>
               <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-1.5 h-6 bg-[#1565C0] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#059669] rounded-full" />
                 내담자의 동의 없이 정보 제공은 이루어지지 않습니다
               </h3>
               <div className="space-y-4">
@@ -6658,7 +6681,7 @@ const ConfidentialityPage = () => (
 
             <section>
               <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                <div className="w-1.5 h-6 bg-[#1565C0] rounded-full" />
+                <div className="w-1.5 h-6 bg-[#059669] rounded-full" />
                 상담은 안전한 공간에서 이루어집니다
               </h3>
               <div className="space-y-4">
@@ -6710,7 +6733,7 @@ const ConfidentialityPage = () => (
           href={NAVER_PLACE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-12 py-6 bg-[#4F46E5] text-white text-xl font-bold rounded-2xl hover:bg-[#4338ca] transition-all shadow-xl"
+          className="inline-flex items-center gap-3 px-12 py-6 bg-[#059669] text-white text-xl font-bold rounded-2xl hover:bg-[#047857] transition-all shadow-xl shadow-emerald-100"
         >
           상담 문의하기
           <ArrowRight className="w-6 h-6" />
@@ -6768,7 +6791,7 @@ const GuidePage = ({ title, slug }: { title: string; slug: string }) => {
             {/* Sentencing FAQ Section */}
             <section>
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-1 h-8 bg-[#1565C0] rounded-full" />
+                <div className="w-1 h-8 bg-[#059669] rounded-full" />
                 <h2 className="text-2xl lg:text-3xl font-bold text-slate-900">판사가 실제로 보는 것 (양형자료 관련 FAQ)</h2>
               </div>
               <div className="max-w-4xl">
@@ -6801,7 +6824,7 @@ const GuidePage = ({ title, slug }: { title: string; slug: string }) => {
                     href={NAVER_PLACE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-10 py-4 bg-[#4F46E5] text-white font-bold rounded-2xl hover:bg-[#4338ca] transition-all flex items-center gap-2 shadow-lg"
+                    className="px-10 py-4 bg-[#059669] text-white font-bold rounded-2xl hover:bg-[#047857] transition-all flex items-center gap-2 shadow-lg shadow-emerald-100"
                   >
                     상담 예약하기
                     <ArrowRight className="w-5 h-5" />
@@ -6814,7 +6837,7 @@ const GuidePage = ({ title, slug }: { title: string; slug: string }) => {
                   </a>
                 </div>
               </div>
-              <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-100/50 blur-[100px] rounded-full -ml-32 -mt-32" />
+              <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-100/50 blur-[100px] rounded-full -ml-32 -mt-32" />
             </div>
           </div>
         )}
@@ -6823,18 +6846,18 @@ const GuidePage = ({ title, slug }: { title: string; slug: string }) => {
         <div className="max-w-4xl mx-auto">
           <div className="p-12 rounded-[40px] bg-slate-50 text-slate-900 border border-slate-200">
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center">
-                <Lock className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center">
+                <Lock className="w-6 h-6 text-emerald-600" />
               </div>
               <h2 className="text-3xl font-bold">비밀보장 및 윤리규정</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-6">
-                <h4 className="text-xl font-bold text-indigo-600">철저한 기록 관리</h4>
+                <h4 className="text-xl font-bold text-emerald-600">철저한 기록 관리</h4>
                 <p className="text-slate-500 leading-relaxed">모든 상담 기록은 암호화되어 안전하게 보관되며, 법적 의무 사항(자해/타해 위험 등)을 제외하고는 절대 외부로 공개되지 않습니다.</p>
               </div>
               <div className="space-y-6">
-                <h4 className="text-xl font-bold text-indigo-600">개인정보 보호</h4>
+                <h4 className="text-xl font-bold text-emerald-600">개인정보 보호</h4>
                 <p className="text-slate-500 leading-relaxed">상담 신청부터 종결까지 모든 과정에서 내담자의 신원 보호를 최우선으로 합니다. 익명 상담 신청도 가능합니다.</p>
               </div>
             </div>
@@ -7162,7 +7185,7 @@ const DigitalRiskTest = () => {
       {!showResult && (
         <div className="fixed top-0 left-0 w-full h-1.5 bg-slate-100 z-50">
           <motion.div 
-            className="h-full bg-[#4F46E5]"
+            className="h-full bg-[#059669]"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
           />
@@ -7172,13 +7195,13 @@ const DigitalRiskTest = () => {
       {!showResult ? (
         <div className="space-y-16">
           <header className="relative py-12 px-8 rounded-[40px] bg-slate-50 border border-slate-100 overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-indigo-500" />
+                  <Smartphone className="w-5 h-5 text-emerald-600" />
                 </div>
-                <span className="text-indigo-500 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
+                <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                 디지털 성범죄 <br /> 위험도 자가 체크
@@ -7213,8 +7236,8 @@ const DigitalRiskTest = () => {
                           <span className="inline-block px-3 py-1 rounded-full bg-slate-50 text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-3">
                             Question {globalIdx + 1}
                           </span>
-                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-[#4F46E5] transition-colors">
-                            <span className="text-[#4F46E5] font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
+                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-[#059669] transition-colors">
+                            <span className="text-[#059669] font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
                             {q.text}
                           </p>
                         </div>
@@ -7235,8 +7258,8 @@ const DigitalRiskTest = () => {
                               }}
                               className={`relative flex flex-col items-center justify-center py-5 px-4 rounded-2xl transition-all border-2 ${
                                 answers[globalIdx] === item.score 
-                                  ? 'bg-[#4F46E5] border-[#4F46E5] text-white shadow-xl shadow-indigo-100 -translate-y-1' 
-                                  : 'bg-white border-slate-100 text-slate-400 hover:border-indigo-200 hover:bg-indigo-50/30'
+                                  ? 'bg-[#059669] border-[#059669] text-white shadow-xl shadow-emerald-100 -translate-y-1' 
+                                  : 'bg-white border-slate-100 text-slate-400 hover:border-emerald-200 hover:bg-emerald-50/30'
                               }`}
                             >
                               <span className={`text-2xl font-black mb-1 ${answers[globalIdx] === item.score ? 'text-white' : 'text-slate-200'}`}>
@@ -7248,7 +7271,7 @@ const DigitalRiskTest = () => {
                                   layoutId={`active-indicator-${globalIdx}`}
                                   className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm"
                                 >
-                                  <div className="w-2 h-2 bg-[#4F46E5] rounded-full" />
+                                  <div className="w-2 h-2 bg-[#059669] rounded-full" />
                                 </motion.div>
                               )}
                             </button>
@@ -7299,18 +7322,18 @@ const DigitalRiskTest = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="space-y-12"
         >
-          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-indigo-100 overflow-hidden`}>
+          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-emerald-100 overflow-hidden`}>
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
             <div className="relative z-10">
               <div className="w-24 h-24 rounded-[32px] bg-white shadow-2xl flex items-center justify-center mx-auto mb-10">
-                <Smartphone className="w-12 h-12 text-[#4F46E5]" />
+                <Smartphone className="w-12 h-12 text-[#059669]" />
               </div>
               <h2 className="text-xl font-bold text-slate-400 mb-2 uppercase tracking-[0.2em]">Analysis Result</h2>
               <div className="text-7xl font-black text-slate-900 mb-10 tracking-tighter">
                 {totalScore} <span className="text-2xl font-bold text-slate-300">/ 60</span>
               </div>
               
-              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-indigo-500/5`}>
+              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-emerald-500/5`}>
                 <div className={`w-3 h-3 rounded-full animate-pulse bg-current`} />
                 {result.title}
               </div>
@@ -7323,18 +7346,18 @@ const DigitalRiskTest = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-10 rounded-[40px] bg-slate-50 border border-slate-100 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-emerald-500/10 transition-colors" />
               <h4 className="font-bold text-2xl text-slate-900 mb-8 flex items-center gap-3">
-                <Zap className="w-6 h-6 text-indigo-500" />
+                <Zap className="w-6 h-6 text-emerald-600" />
                 위험성 분석
               </h4>
               <p className="text-slate-600 leading-relaxed text-lg">
                 디지털 성범죄는 '기록의 영구성'과 '확산의 신속성' 때문에 피해자에게 씻을 수 없는 고통을 줍니다. 또한 수사 기관의 포렌식 기술은 매우 정교하여 삭제된 기록도 복원이 가능합니다. 단순 시청이나 소지도 엄격한 처벌 대상이 됨을 명심해야 합니다.
               </p>
             </div>
-            <div className="p-10 rounded-[40px] bg-indigo-50 border border-indigo-100">
+            <div className="p-10 rounded-[40px] bg-emerald-50 border border-emerald-100">
               <h4 className="font-bold text-2xl text-slate-900 mb-8 flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-indigo-500" />
+                <ShieldCheck className="w-6 h-6 text-emerald-600" />
                 솔루션 가이드
               </h4>
               <ul className="space-y-6">
@@ -7344,7 +7367,7 @@ const DigitalRiskTest = () => {
                   "디지털 성범죄 관련 법률 및 윤리 교육"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-4 items-start">
-                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-indigo-500 shrink-0 shadow-sm">
+                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-emerald-600 shrink-0 shadow-sm">
                       {idx + 1}
                     </div>
                     <span className="text-slate-700 font-medium text-lg leading-snug">{item}</span>
@@ -7369,7 +7392,7 @@ const DigitalRiskTest = () => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-[2] py-6 bg-[#4F46E5] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#4338ca] transition-all shadow-2xl shadow-indigo-100 active:scale-95"
+              className="flex-[2] py-6 bg-[#059669] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100 active:scale-95"
             >
               전문가 상담 신청하기
             </a>
@@ -7427,7 +7450,7 @@ const GenderSensitivityTest = () => {
       {!showResult && (
         <div className="fixed top-0 left-0 w-full h-1.5 bg-slate-100 z-50">
           <motion.div 
-            className="h-full bg-[#4F46E5]"
+            className="h-full bg-[#059669]"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
           />
@@ -7436,14 +7459,14 @@ const GenderSensitivityTest = () => {
 
       {!showResult ? (
         <div className="space-y-16">
-          <header className="relative py-12 px-8 rounded-[40px] bg-indigo-50 border border-indigo-100 overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
+          <header className="relative py-12 px-8 rounded-[40px] bg-emerald-50 border border-emerald-100 overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
-                  <ClipboardCheck className="w-5 h-5 text-indigo-500" />
+                  <ClipboardCheck className="w-5 h-5 text-emerald-600" />
                 </div>
-                <span className="text-indigo-500 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
+                <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                 성인지 감수성 <br /> 자가 체크 테스트
@@ -7478,8 +7501,8 @@ const GenderSensitivityTest = () => {
                           <span className="inline-block px-3 py-1 rounded-full bg-slate-50 text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-3">
                             Question {globalIdx + 1}
                           </span>
-                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-[#4F46E5] transition-colors">
-                            <span className="text-[#4F46E5] font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
+                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-[#059669] transition-colors">
+                            <span className="text-[#059669] font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
                             {q.text}
                           </p>
                         </div>
@@ -7500,8 +7523,8 @@ const GenderSensitivityTest = () => {
                               }}
                               className={`relative flex flex-col items-center justify-center py-5 px-4 rounded-2xl transition-all border-2 ${
                                 answers[globalIdx] === item.score 
-                                  ? 'bg-[#4F46E5] border-[#4F46E5] text-white shadow-xl shadow-indigo-100 -translate-y-1' 
-                                  : 'bg-white border-slate-100 text-slate-400 hover:border-indigo-200 hover:bg-indigo-50/30'
+                                  ? 'bg-[#059669] border-[#059669] text-white shadow-xl shadow-emerald-100 -translate-y-1' 
+                                  : 'bg-white border-slate-100 text-slate-400 hover:border-emerald-200 hover:bg-emerald-50/30'
                               }`}
                             >
                               <span className={`text-2xl font-black mb-1 ${answers[globalIdx] === item.score ? 'text-white' : 'text-slate-200'}`}>
@@ -7513,7 +7536,7 @@ const GenderSensitivityTest = () => {
                                   layoutId={`active-indicator-sensitivity-${globalIdx}`}
                                   className="absolute -top-1 -right-1 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm"
                                 >
-                                  <div className="w-2 h-2 bg-[#4F46E5] rounded-full" />
+                                  <div className="w-2 h-2 bg-[#059669] rounded-full" />
                                 </motion.div>
                               )}
                             </button>
@@ -7531,7 +7554,7 @@ const GenderSensitivityTest = () => {
             <div className="text-center">
               <p className="text-slate-400 text-sm mb-2">진행률 {Math.round(progress)}%</p>
               <div className="w-48 h-1 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-[#4F46E5] transition-all duration-500" style={{ width: `${progress}%` }} />
+                <div className="h-full bg-[#059669] transition-all duration-500" style={{ width: `${progress}%` }} />
               </div>
             </div>
 
@@ -7550,7 +7573,7 @@ const GenderSensitivityTest = () => {
               }}
               className={`w-full max-w-md py-6 rounded-[24px] font-black text-xl tracking-tight transition-all ${
                 isComplete 
-                  ? 'bg-[#4F46E5] text-white shadow-2xl shadow-indigo-100 hover:bg-[#4338ca] hover:-translate-y-1 active:scale-95' 
+                  ? 'bg-[#059669] text-white shadow-2xl shadow-emerald-100 hover:bg-[#047857] hover:-translate-y-1 active:scale-95' 
                   : 'bg-slate-100 text-slate-300 cursor-not-allowed'
               }`}
             >
@@ -7564,18 +7587,18 @@ const GenderSensitivityTest = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="space-y-12"
         >
-          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-indigo-100 overflow-hidden`}>
+          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-emerald-100 overflow-hidden`}>
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
             <div className="relative z-10">
               <div className="w-24 h-24 rounded-[32px] bg-white shadow-2xl flex items-center justify-center mx-auto mb-10">
-                <ClipboardCheck className="w-12 h-12 text-[#4F46E5]" />
+                <ClipboardCheck className="w-12 h-12 text-[#059669]" />
               </div>
               <h2 className="text-xl font-bold text-slate-400 mb-2 uppercase tracking-[0.2em]">Analysis Result</h2>
               <div className="text-7xl font-black text-slate-900 mb-10 tracking-tighter">
                 {totalScore} <span className="text-2xl font-bold text-slate-300">/ 60</span>
               </div>
               
-              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-indigo-500/5`}>
+              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-emerald-500/5`}>
                 <div className={`w-3 h-3 rounded-full animate-pulse bg-current`} />
                 {result.title}
               </div>
@@ -7588,18 +7611,18 @@ const GenderSensitivityTest = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-10 rounded-[40px] bg-slate-50 border border-slate-100 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-emerald-500/10 transition-colors" />
               <h4 className="font-bold text-2xl text-slate-900 mb-8 flex items-center gap-3">
-                <Zap className="w-6 h-6 text-indigo-500" />
+                <Zap className="w-6 h-6 text-emerald-500" />
                 전문가 소견
               </h4>
               <p className="text-slate-600 leading-relaxed text-lg">
                 성인지 왜곡은 단순한 생각의 차이가 아니라, 타인의 권리를 침해할 수 있는 위험한 인지 구조입니다. 특히 '피해자 유발론'이나 '책임 회피'적 사고는 재범의 가장 큰 원인이 됩니다. 저희 센터는 이러한 왜곡된 인지 구조를 객관적으로 분석하고 교정하는 특화 프로그램을 운영하고 있습니다.
               </p>
             </div>
-            <div className="p-10 rounded-[40px] bg-indigo-50 border border-indigo-100">
+            <div className="p-10 rounded-[40px] bg-emerald-50 border border-emerald-100">
               <h4 className="font-bold text-2xl text-slate-900 mb-8 flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-indigo-500" />
+                <ShieldCheck className="w-6 h-6 text-emerald-500" />
                 다음 단계 안내
               </h4>
               <ul className="space-y-6">
@@ -7609,7 +7632,7 @@ const GenderSensitivityTest = () => {
                   "재범 방지를 위한 행동 계약 수립"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-4 items-start">
-                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-indigo-500 shrink-0 shadow-sm">
+                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-emerald-500 shrink-0 shadow-sm">
                       {idx + 1}
                     </div>
                     <span className="text-slate-700 font-medium text-lg leading-snug">{item}</span>
@@ -7634,7 +7657,7 @@ const GenderSensitivityTest = () => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-[2] py-6 bg-[#4F46E5] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#4338ca] transition-all shadow-2xl shadow-indigo-100 active:scale-95"
+              className="flex-[2] py-6 bg-[#059669] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100 active:scale-95"
             >
               상담 및 교육 신청하기
             </a>
@@ -7696,10 +7719,11 @@ const RecidivismRiskTest = () => {
 
   return (
     <div className="max-w-4xl mx-auto pb-24">
+      {/* Sticky Progress Bar */}
       {!showResult && (
         <div className="fixed top-0 left-0 w-full h-1.5 bg-slate-100 z-50">
           <motion.div 
-            className="h-full bg-[#1565C0]"
+            className="h-full bg-[#059669]"
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
           />
@@ -7708,14 +7732,14 @@ const RecidivismRiskTest = () => {
 
       {!showResult ? (
         <div className="space-y-16">
-          <header className="relative py-12 px-8 rounded-[40px] bg-slate-50 border border-slate-100 overflow-hidden text-slate-900">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
+          <header className="relative py-12 px-8 rounded-[40px] bg-emerald-50 border border-emerald-100 overflow-hidden text-slate-900">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 blur-3xl rounded-full -mr-32 -mt-32" />
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
-                  <Scale className="w-5 h-5 text-indigo-500" />
+                  <Scale className="w-5 h-5 text-emerald-600" />
                 </div>
-                <span className="text-indigo-500 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
+                <span className="text-emerald-600 font-bold tracking-widest text-xs uppercase">Self-Diagnosis</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
                 재범 위험성 <br /> 간이 측정
@@ -7750,8 +7774,8 @@ const RecidivismRiskTest = () => {
                           <span className="inline-block px-3 py-1 rounded-full bg-slate-50 text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-3">
                             Question {globalIdx + 1}
                           </span>
-                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-indigo-600 transition-colors">
-                            <span className="text-indigo-500 font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
+                          <p className="text-xl md:text-2xl text-slate-800 font-medium leading-snug group-hover:text-[#059669] transition-colors">
+                            <span className="text-[#059669] font-black mr-3 opacity-30 group-hover:opacity-100 transition-opacity">{globalIdx + 1}.</span>
                             {q.text}
                           </p>
                         </div>
@@ -7772,8 +7796,8 @@ const RecidivismRiskTest = () => {
                               }}
                               className={`relative flex flex-col items-center justify-center py-5 px-4 rounded-2xl transition-all border-2 ${
                                 answers[globalIdx] === item.score 
-                                  ? 'bg-[#1565C0] border-[#1565C0] text-white shadow-xl shadow-blue-100 -translate-y-1' 
-                                  : 'bg-white border-slate-100 text-slate-400 hover:border-indigo-200 hover:bg-indigo-50/30'
+                                  ? 'bg-[#059669] border-[#059669] text-white shadow-xl shadow-emerald-100 -translate-y-1' 
+                                  : 'bg-white border-slate-100 text-slate-400 hover:border-emerald-200 hover:bg-emerald-50/30'
                               }`}
                             >
                               <span className={`text-2xl font-black mb-1 ${answers[globalIdx] === item.score ? 'text-white' : 'text-slate-200'}`}>
@@ -7795,7 +7819,7 @@ const RecidivismRiskTest = () => {
             <div className="text-center">
               <p className="text-slate-400 text-sm mb-2">진행률 {Math.round(progress)}%</p>
               <div className="w-48 h-1 bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-[#1565C0] transition-all duration-500" style={{ width: `${progress}%` }} />
+                <div className="h-full bg-[#059669] transition-all duration-500" style={{ width: `${progress}%` }} />
               </div>
             </div>
 
@@ -7814,7 +7838,7 @@ const RecidivismRiskTest = () => {
               }}
               className={`w-full max-w-md py-6 rounded-[24px] font-black text-xl tracking-tight transition-all ${
                 isComplete 
-                  ? 'bg-indigo-600 text-white shadow-2xl shadow-indigo-100 hover:bg-indigo-700 hover:-translate-y-1 active:scale-95' 
+                  ? 'bg-[#059669] text-white shadow-2xl shadow-emerald-100 hover:bg-[#047857] hover:-translate-y-1 active:scale-95' 
                   : 'bg-slate-100 text-slate-300 cursor-not-allowed'
               }`}
             >
@@ -7828,18 +7852,18 @@ const RecidivismRiskTest = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="space-y-12"
         >
-          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-slate-100 overflow-hidden`}>
+          <div className={`relative p-16 rounded-[60px] text-center ${result.bg} border border-emerald-100 overflow-hidden`}>
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
             <div className="relative z-10">
               <div className="w-24 h-24 rounded-[32px] bg-white shadow-2xl flex items-center justify-center mx-auto mb-10">
-                <Scale className="w-12 h-12 text-slate-900" />
+                <Scale className="w-12 h-12 text-[#059669]" />
               </div>
               <h2 className="text-xl font-bold text-slate-400 mb-2 uppercase tracking-[0.2em]">Analysis Result</h2>
               <div className="text-7xl font-black text-slate-900 mb-10 tracking-tighter">
                 {totalScore} <span className="text-2xl font-bold text-slate-300">/ 60</span>
               </div>
               
-              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-slate-500/5`}>
+              <div className={`inline-flex items-center gap-3 px-10 py-4 rounded-full font-black text-2xl mb-10 ${result.color} bg-white shadow-xl shadow-emerald-500/5`}>
                 <div className={`w-3 h-3 rounded-full animate-pulse bg-current`} />
                 {result.title}
               </div>
@@ -7852,18 +7876,18 @@ const RecidivismRiskTest = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-10 rounded-[40px] bg-slate-50 text-slate-900 relative overflow-hidden group border border-slate-100">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 blur-2xl rounded-full -mr-16 -mt-16 group-hover:bg-emerald-500/10 transition-colors" />
               <h4 className="font-bold text-2xl mb-8 flex items-center gap-3">
-                <Zap className="w-6 h-6 text-[#1565C0]" />
+                <Zap className="w-6 h-6 text-emerald-500" />
                 위험 요인 분석
               </h4>
               <p className="text-slate-500 leading-relaxed text-lg">
-                재범 위험성은 고정된 것이 아니라 생활 환경과 인지 상태에 따라 변화합니다. 특히 스트레스 관리 실패와 인지 왜곡의 심화는 가장 큰 위험 신호입니다. 자신의 취약점을 명확히 알고 이를 보완하는 체계적인 관리가 필요합니다.
+                재범 위험성은 고정된 것이 아니라 생활 환경과 인지 상태에 따라 변화합니다. 특히 스트레스 관리 실패 and 인지 왜곡의 심화는 가장 큰 위험 신호입니다. 자신의 취약점을 명확히 알고 이를 보완하는 체계적인 관리가 필요합니다.
               </p>
             </div>
-            <div className="p-10 rounded-[40px] bg-slate-50 border border-slate-200">
+            <div className="p-10 rounded-[40px] bg-emerald-50 border border-emerald-100">
               <h4 className="font-bold text-2xl text-slate-900 mb-8 flex items-center gap-3">
-                <ShieldCheck className="w-6 h-6 text-indigo-500" />
+                <ShieldCheck className="w-6 h-6 text-emerald-500" />
                 재발 방지 솔루션
               </h4>
               <ul className="space-y-6">
@@ -7873,7 +7897,7 @@ const RecidivismRiskTest = () => {
                   "생활 안정성 확보를 위한 규칙적인 생활 습관 형성"
                 ].map((item, idx) => (
                   <li key={idx} className="flex gap-4 items-start">
-                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-slate-900 shrink-0 shadow-sm">
+                    <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center text-sm font-black text-emerald-500 shrink-0 shadow-sm">
                       {idx + 1}
                     </div>
                     <span className="text-slate-700 font-medium text-lg leading-snug">{item}</span>
@@ -7898,7 +7922,7 @@ const RecidivismRiskTest = () => {
               href={NAVER_PLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-[2] py-6 bg-[#1565C0] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#115599] transition-all shadow-2xl shadow-blue-100 active:scale-95"
+              className="flex-[2] py-6 bg-[#059669] text-white text-center font-black text-lg rounded-[24px] hover:bg-[#047857] transition-all shadow-2xl shadow-emerald-100 active:scale-95"
             >
               상담 및 교육 신청하기
             </a>
@@ -8523,7 +8547,7 @@ const MediaArchive = () => {
               <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">{stat.label}</p>
               <p className="text-2xl font-black text-slate-900">{stat.value}</p>
             </div>
-            <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
+            <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-colors">
               <stat.icon className="w-7 h-7" />
             </div>
           </div>
@@ -8534,7 +8558,7 @@ const MediaArchive = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Category Stats Graph */}
         <div className="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm space-y-6">
-          <div className="flex items-center gap-3 text-indigo-600">
+          <div className="flex items-center gap-3 text-emerald-600">
             <PieChart className="w-6 h-6" />
             <h4 className="font-bold">카테고리별 분포</h4>
           </div>
@@ -8543,11 +8567,11 @@ const MediaArchive = () => {
               <div key={i} className="space-y-1.5">
                 <div className="flex justify-between text-xs font-bold">
                   <span className="text-slate-600">{stat.name}</span>
-                  <span className="text-indigo-600">{stat.count}건</span>
+                  <span className="text-emerald-600">{stat.count}건</span>
                 </div>
                 <div className="h-1.5 w-full bg-slate-50 rounded-full overflow-hidden">
                   <div 
-                    className="h-full bg-indigo-500 rounded-full" 
+                    className="h-full bg-emerald-500 rounded-full" 
                     style={{ width: `${(stat.count / stats.total) * 100}%` }}
                   />
                 </div>
@@ -8558,7 +8582,7 @@ const MediaArchive = () => {
 
         {/* Monthly Archive */}
         <div className="bg-white p-8 rounded-[40px] border border-slate-100 shadow-sm space-y-6">
-          <div className="flex items-center gap-3 text-indigo-600">
+          <div className="flex items-center gap-3 text-emerald-600">
             <Clock className="w-6 h-6" />
             <h4 className="font-bold">월별 아카이브</h4>
           </div>
@@ -8582,7 +8606,7 @@ const MediaArchive = () => {
                 onClick={() => setFilter(cat)}
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
                   filter === cat 
-                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' 
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-100' 
                     : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
                 }`}
               >
@@ -8594,7 +8618,7 @@ const MediaArchive = () => {
             <select 
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-slate-50 border-none rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
+              className="bg-slate-50 border-none rounded-2xl px-4 py-3 text-sm font-bold text-slate-600 focus:ring-2 focus:ring-emerald-500 outline-none"
             >
               <option value="최신순">최신순</option>
               <option value="카테고리순">카테고리순</option>
@@ -8608,7 +8632,7 @@ const MediaArchive = () => {
             placeholder="기사 제목, 요약, 언론사 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-14 pr-6 py-5 bg-slate-50 border-none rounded-3xl text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500 outline-none font-medium"
+            className="w-full pl-14 pr-6 py-5 bg-slate-50 border-none rounded-3xl text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-emerald-500 outline-none font-medium"
           />
         </div>
       </div>
@@ -8625,7 +8649,7 @@ const MediaArchive = () => {
           >
             <div className="p-8 lg:p-10 flex-grow space-y-6">
               <div className="flex items-center justify-between">
-                <span className="px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-[11px] font-black uppercase tracking-widest">
+                <span className="px-4 py-1.5 bg-emerald-50 text-emerald-600 rounded-full text-[11px] font-black uppercase tracking-widest">
                   {item.category}
                 </span>
                 <span className="text-xs font-bold text-slate-400 flex items-center gap-1.5">
@@ -8635,8 +8659,8 @@ const MediaArchive = () => {
               </div>
               
               <div className="space-y-3">
-                <p className="text-sm font-bold text-indigo-500">{item.source}</p>
-                <h3 className="text-xl lg:text-2xl font-black text-slate-900 leading-snug group-hover:text-indigo-600 transition-colors">
+                <p className="text-sm font-bold text-emerald-500">{item.source}</p>
+                <h3 className="text-xl lg:text-2xl font-black text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors">
                   <a href={item.url} target="_blank" rel="noopener noreferrer">
                     {item.title}
                   </a>
@@ -8649,7 +8673,7 @@ const MediaArchive = () => {
 
               <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
                 <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
+                  <ShieldCheck className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                   <div>
                     <p className="text-xs font-black text-slate-400 uppercase tracking-wider mb-1">상담/대응 포인트</p>
                     <p className="text-sm text-slate-700 font-medium leading-relaxed">
@@ -8665,7 +8689,7 @@ const MediaArchive = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 bg-[#1565C0] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#115599] transition-all group/btn shadow-lg shadow-blue-100"
+                className="w-full py-4 bg-[#059669] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#047857] transition-all group/btn shadow-lg shadow-emerald-100"
               >
                 기사 원문 보기
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -8687,27 +8711,27 @@ const MediaArchive = () => {
       {/* Footer Disclaimer */}
       <footer className="bg-slate-50 rounded-[48px] p-10 lg:p-16 text-slate-900 space-y-8 border border-slate-100">
         <div className="flex items-center gap-3">
-          <AlertCircle className="w-6 h-6 text-[#1565C0]" />
+          <AlertCircle className="w-6 h-6 text-[#059669]" />
           <h4 className="text-xl font-bold">자료 이용 시 유의사항</h4>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-slate-500 leading-relaxed">
           <ul className="space-y-3">
             <li className="flex gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#1565C0] mt-1.5 shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#059669] mt-1.5 shrink-0" />
               본 페이지는 관련 기사 제목과 링크, 그리고 자체 작성한 짧은 정보 요약을 정리한 자료입니다.
             </li>
             <li className="flex gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#1565C0] mt-1.5 shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#059669] mt-1.5 shrink-0" />
               기사 원문과 저작권은 각 언론사 및 저작권자에게 있습니다.
             </li>
           </ul>
           <ul className="space-y-3">
             <li className="flex gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#1565C0] mt-1.5 shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#059669] mt-1.5 shrink-0" />
               구체적인 법률 판단은 사건별로 다를 수 있으며, 필요 시 변호사 상담이 필요할 수 있습니다.
             </li>
             <li className="flex gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#1565C0] mt-1.5 shrink-0" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#059669] mt-1.5 shrink-0" />
               심리상담은 사건 이후의 인식 변화, 재범방지 노력, 자기이해를 돕는 과정입니다.
             </li>
           </ul>
@@ -8720,6 +8744,18 @@ const MediaArchive = () => {
 const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
   const [activeTest, setActiveTest] = useState<string | null>(null);
   const [activePost, setActivePost] = useState<typeof COLUMN_POSTS[0] | null>(null);
+
+  useEffect(() => {
+    const handleReset = () => {
+      setActivePost(null);
+      setActiveTest(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('reset-column-page', handleReset);
+    return () => {
+      window.removeEventListener('reset-column-page', handleReset);
+    };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -8744,7 +8780,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                   setActiveTest(null);
                   setActivePost(null);
                 }}
-                className={`p-2 rounded-full border transition-colors ${slug === 'media' ? 'bg-white border-slate-200 text-slate-600 hover:text-[#4F46E5]' : 'bg-white border-slate-200 text-slate-600 hover:text-[#4F46E5]'}`}
+                className={`p-2 rounded-full border transition-colors ${slug === 'media' ? 'bg-white border-slate-200 text-slate-600 hover:text-[#059669]' : 'bg-white border-slate-200 text-slate-600 hover:text-[#059669]'}`}
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
@@ -8753,7 +8789,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
               {activeTest ? activeTest : activePost ? activePost.category : title}
             </h1>
           </div>
-          <p className={`text-lg ${slug === 'media' ? 'text-slate-600' : 'text-slate-500'}`}>
+          <div className={`text-lg ${slug === 'media' ? 'text-slate-600' : 'text-slate-500'}`}>
             {activeTest 
               ? "객관적인 자가진단을 통해 자신의 상태를 점검해보세요." 
               : activePost
@@ -8764,7 +8800,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                   <span className="block whitespace-pre-line">
                     재범방지, 심리상담, 사건 대응, 성인지 교육과 관련된 주요 기사를 정리한 자료입니다.
                   </span>
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold ${slug === 'media' ? 'bg-indigo-50 text-indigo-600 border border-indigo-100' : 'bg-indigo-50 text-indigo-600'}`}>
+                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold ${slug === 'media' ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-emerald-50 text-emerald-600'}`}>
                     <Info className="w-4 h-4" />
                     기사 제목을 누르면 원문을 확인할 수 있습니다. 본 페이지는 기사 원문 재게시가 아닌 정보 정리 및 안내를 위한 자료입니다.
                   </div>
@@ -8772,7 +8808,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
               )
               : "부산 성범죄 예방과 교정을 위한 전문 지식과 사례를 공유합니다."
             }
-          </p>
+          </div>
         </div>
       </div>
 
@@ -8791,7 +8827,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
             ].map((item, idx) => (
               <div key={idx} className="p-10 rounded-[32px] border border-slate-100 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group">
                 <div className="flex justify-between items-start mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-[#4F46E5] flex items-center justify-center group-hover:bg-[#4F46E5] group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-primary-deep flex items-center justify-center group-hover:bg-primary-deep group-hover:text-white transition-colors">
                     <ClipboardCheck className="w-6 h-6" />
                   </div>
                   <span className="text-xs font-bold text-slate-400 bg-slate-50 px-3 py-1 rounded-full">{item.items} 문항</span>
@@ -8802,7 +8838,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                   onClick={() => (item.id === 'gender' || item.id === 'digital' || item.id === 'impulse' || item.id === 'recidivism') && setActiveTest(item.title)}
                   className={`w-full py-4 font-bold rounded-2xl transition-colors ${
                     (item.id === 'gender' || item.id === 'digital' || item.id === 'impulse' || item.id === 'recidivism')
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-700' 
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700' 
                       : 'bg-slate-100 text-slate-400 cursor-not-allowed'
                   }`}
                 >
@@ -8849,11 +8885,11 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                 </div>
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#4F46E5] transition-colors leading-snug">
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#059669] transition-colors leading-snug">
                   {post.title}
                 </h3>
                 {post.content && (
-                  <div className="flex items-center gap-2 text-[#4F46E5] font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-2 text-[#059669] font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                     자세히 보기 <ArrowRight className="w-4 h-4" />
                   </div>
                 )}
@@ -8871,7 +8907,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
           >
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <span className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-bold uppercase tracking-wider">
+                <span className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full text-xs font-bold uppercase tracking-wider">
                   {activePost.category}
                 </span>
               </div>
@@ -8899,7 +8935,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                 <div key={idx}>
                   {block.type === 'header' ? (
                     <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                      <div className="w-1.5 h-8 bg-indigo-500 rounded-full" />
+                      <div className="w-1.5 h-8 bg-emerald-500 rounded-full" />
                       {block.value}
                     </h3>
                   ) : (
@@ -8912,8 +8948,8 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
             </div>
 
             <div className="mt-24 pt-12 border-t border-slate-100 flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-indigo-50 flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-indigo-500" />
+              <div className="w-16 h-16 rounded-full bg-emerald-50 flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-emerald-500" />
               </div>
               <h4 className="text-xl font-bold text-slate-900 mb-4">변화는 혼자서 어렵지만, 함께라면 가능합니다.</h4>
               <p className="text-slate-500 mb-10 max-w-lg">
@@ -8924,7 +8960,7 @@ const ArchivePage = ({ title, slug }: { title: string; slug: string }) => {
                 href={NAVER_PLACE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-12 py-5 bg-[#1565C0] text-white text-center font-black rounded-2xl hover:bg-[#115599] transition-all shadow-xl shadow-blue-100 active:scale-95"
+                className="px-12 py-5 bg-[#059669] text-white text-center font-black rounded-2xl hover:bg-[#047857] transition-all shadow-xl shadow-emerald-100 active:scale-95"
               >
                 전문가와 상담 시작하기
               </a>
@@ -9105,6 +9141,9 @@ export default function App() {
 
             {/* Application Route */}
             <Route path="/apply" element={<ApplicationPage />} />
+
+            {/* Dentistry Landing Page */}
+            <Route path="/dentistry-landing" element={<DentistryLandingPage />} />
             
             {/* Other Routes */}
             {NAV_STRUCTURE.filter((_, i) => i !== 0 && i !== 1 && i !== 2 && i !== 3 && i !== 4 && i !== 5).map(item => (

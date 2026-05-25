@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Roboto:wght@400;500&family=Poppins:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Montserrat", "Poppins", sans-serif;
   
-  --color-bg-soft: #F5F5F5;
-  --color-primary-deep: #0D47A1;
-  --color-cta-deep: #D84315;
-  --color-footer-bg: #424242;
+  --color-bg-soft: #F0FDF4; /* Light emerald background */
+  --color-primary-deep: #065f46; /* Emerald 800 */
+  --color-cta-deep: #10b981; /* Emerald 500 */
+  --color-footer-bg: #064e3b; /* Emerald 900 */
 
   /* Remote Program Page Colors */
-  --color-remote-primary: #0f3f3a;
-  --color-remote-sub: #145c54;
-  --color-remote-mint: #1fc7b6;
-  --color-remote-mint-hover: #2dd4bf;
-  --color-remote-bg-light: #f8fafc;
+  --color-remote-primary: #064e3b;
+  --color-remote-sub: #065f46;
+  --color-remote-mint: #10b981;
+  --color-remote-mint-hover: #059669;
+  --color-remote-bg-light: #f0fdf4;
 }
 
 @layer utilities {
@@ -71,11 +71,11 @@
 
 /* Custom Button Styles */
 .btn-primary {
-  @apply bg-primary-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-[#0a3d8a];
+  @apply bg-primary-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-emerald-700;
 }
 
 .btn-cta {
-  @apply bg-cta-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-[#bf360c];
+  @apply bg-cta-deep text-white rounded-full px-8 py-4 font-bold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg hover:bg-emerald-600;
 }
 
 .section-padding {

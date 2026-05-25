@@ -1205,7 +1205,7 @@ const MediaAppearancePage = () => {
                 className={`whitespace-nowrap px-3.5 py-2 md:px-6 md:py-2.5 rounded-full text-[13px] md:text-sm font-bold transition-all ${
                   activeCategory === category
                     ? 'bg-primary-deep text-white shadow-md'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-deep/30 hover:bg-indigo-50/50'
+                    : 'bg-white text-slate-600 border border-slate-200 hover:border-primary-deep/30 hover:bg-emerald-50/50'
                 }`}
               >
                 {category}
