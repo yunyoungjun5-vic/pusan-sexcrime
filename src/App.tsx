@@ -446,7 +446,7 @@ const Hero = () => (
         >
           <div className="relative z-10 rounded-[32px] lg:rounded-[40px] overflow-hidden shadow-2xl border-4 lg:border-8 border-white">
             <img 
-              src="https://9tsiiw6i9140.edge.naverncp.com/files/sgrsoft/202603/4a50ee1d8c22f9992951cf64c1105d47.png" 
+              src="https://res.cloudinary.com/dxjz9ksjg/image/upload/v1774346413/%EB%B0%9D%EC%9D%80%EB%B2%84%EC%A0%84_f2xbee.png" 
               alt="Professional Counseling" 
               className="w-full h-[300px] sm:h-[400px] lg:h-[600px] object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"
@@ -877,7 +877,7 @@ const Footer = () => (
           <div className="space-y-3 mb-8">
             <div className="flex items-start gap-3 text-slate-300 text-[13px]">
               <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-              <span className="leading-relaxed font-bold text-slate-300">부산광역시 사상구 엄궁남로 24, 102동 3층 302호</span>
+              <span className="leading-relaxed font-bold text-slate-300">부산광역시 중구 해관로 64, 4층 403-A02호 (중앙동4가, 원빌딩)</span>
             </div>
             <div className="flex items-center gap-3 text-slate-300 text-[13px]">
               <PhoneCall className="w-4 h-4 text-slate-400 shrink-0" />
@@ -6048,31 +6048,31 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                  <MapPin className="w-6 h-6 text-[#4F46E5]" />
+                  <MapPin className="w-6 h-6 text-[#059669]" />
                   센터 위치 안내
                 </h3>
                 <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 space-y-6">
                   <div>
-                    <p className="text-sm text-slate-400 mb-1">주소</p>
-                    <p className="text-lg font-bold text-slate-900">부산광역시 사상구 엄궁남로 24, 102동 3층 302호</p>
+                    <p className="text-sm text-slate-400 mb-1 font-bold">📍 주소</p>
+                    <p className="text-lg font-bold text-slate-900">부산광역시 중구 해관로 64, 4층 403-A02호 (중앙동4가, 원빌딩)</p>
                   </div>
                   <div>
-                    <p className="text-sm text-slate-400 mb-1">문의 및 예약</p>
-                    <p className="text-2xl font-bold text-[#4F46E5]">{CONTACT_PHONE}</p>
+                    <p className="text-sm text-slate-400 mb-1 font-bold">문의 및 예약</p>
+                    <p className="text-2xl font-bold text-[#059669]">{CONTACT_PHONE}</p>
                   </div>
                   <div className="pt-6 flex flex-col sm:flex-row gap-4">
                     <a 
                       href={NAVER_PLACE_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-8 py-4 bg-[#03C75A] text-white rounded-2xl font-bold text-center hover:bg-[#02b351] transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-8 py-4 bg-[#03C75A] text-white rounded-2xl font-bold text-center hover:bg-[#02b351] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-50"
                     >
                       <Calendar className="w-5 h-5" />
                       네이버 상담 예약
                     </a>
                     <a 
                       href={`tel:${CONTACT_PHONE}`}
-                      className="flex-1 px-8 py-4 bg-primary-deep text-white rounded-2xl font-bold text-center hover:bg-emerald-900 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-8 py-4 bg-[#059669] text-white rounded-2xl font-bold text-center hover:bg-[#047857] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-50"
                     >
                       <PhoneCall className="w-5 h-5" />
                       전화 문의하기 ({CONTACT_PHONE})
@@ -6083,34 +6083,52 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
               <div className="space-y-6">
                 <h4 className="font-bold text-slate-900 flex items-center gap-2">
-                  <div className="w-1.5 h-5 bg-[#4F46E5] rounded-full" />
-                  교통편 안내
+                  <div className="w-1.5 h-5 bg-[#059669] rounded-full" />
+                  교통편 및 오시는 길 안내
                 </h4>
                 <div className="grid grid-cols-1 gap-4">
-                  <div className="p-6 rounded-2xl border border-slate-100 bg-white">
-                    <p className="font-bold text-slate-800 mb-2">주차 안내</p>
-                    <p className="text-sm text-slate-500 leading-relaxed font-bold">
-                      주차가능 무료입니다. 센터 주변 골목에 주차하시면 됩니다.
+                  {/* 지하철 이용 */}
+                  <div className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm space-y-2">
+                    <p className="font-bold text-slate-900 flex items-center gap-2 text-base">
+                      <span>🚇</span> 지하철 이용
+                    </p>
+                    <div className="text-sm text-slate-600 leading-relaxed font-medium space-y-1 pl-6">
+                      <p>• 부산 1호선 중앙역 하차</p>
+                      <p>• 7번 출구에서 도보 약 3~5분</p>
+                      <p>• 원빌딩 4층 403-A02호로 방문해 주세요.</p>
+                    </div>
+                  </div>
+
+                  {/* 버스 이용 */}
+                  <div className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm space-y-2">
+                    <p className="font-bold text-slate-900 flex items-center gap-2 text-base">
+                      <span>🚌</span> 버스 이용
+                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed font-medium pl-6">
+                      중앙역, 부산세관, 중앙동 인근 버스정류장에서 하차 후 도보 약 3~5분 거리에 위치해 있습니다.
                     </p>
                   </div>
-                  <div className="p-6 rounded-2xl border border-slate-100 bg-white">
-                    <p className="font-bold text-slate-800 mb-4">대중교통 이용 시</p>
-                    <div className="text-sm text-slate-500 leading-relaxed font-bold space-y-4">
-                      <div>
-                        <p className="text-slate-700 mb-1">🚇 지하철 이용</p>
-                        <p className="font-normal">1호선 하단역 하차 → 엄궁동 방향 이동</p>
-                        <div className="mt-2 pl-3 border-l-2 border-slate-200 space-y-2 font-normal">
-                          <p>1) 🚶 도보 이용<br/>하단역 3번출구 기준 약 10~15분 소요</p>
-                          <p>2) 🚕 택시 이용<br/>하단역 5번 또는 7번 출구에서 택시 탑승 (약 5분 소요)</p>
-                        </div>
-                        <p className="mt-2 text-[13px] text-slate-500 font-normal">
-                          도보는 3번 출구, 택시는 5번 또는 7번 출구 이용하시면 편합니다.
-                        </p>
-                      </div>
-                      <div className="pt-2 border-t border-slate-100">
-                        <p className="text-slate-700 mb-1">🚌 버스 이용</p>
-                        <p className="font-normal">‘엄궁동 주민센터’ 또는 인근 정류장 하차<br/>→ 도보 약 5분</p>
-                      </div>
+
+                  {/* 자가용 이용 */}
+                  <div className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm space-y-2">
+                    <p className="font-bold text-slate-900 flex items-center gap-2 text-base">
+                      <span>🚗</span> 자가용 이용
+                    </p>
+                    <div className="text-sm text-slate-600 leading-relaxed font-medium space-y-1.5 pl-6">
+                      <p>• 내비게이션에 '부산광역시 중구 해관로 64' 또는 '원빌딩'을 검색해 주세요.</p>
+                      <p>• 건물 인근 공영주차장 및 민영주차장을 이용하실 수 있습니다. 특히 부산우체국 뒤 공영주차장(해관로 63-1)이 가까워 이용이 편리합니다.</p>
+                    </div>
+                  </div>
+
+                  {/* 찾아오시는 위치 요약 */}
+                  <div className="p-6 rounded-2xl border border-emerald-100 bg-emerald-50/70 shadow-sm space-y-2">
+                    <p className="font-bold text-emerald-950 flex items-center gap-2 text-base">
+                      <span>📍</span> 찾아오시는 위치
+                    </p>
+                    <div className="text-sm text-emerald-900 leading-relaxed font-medium space-y-1 pl-6">
+                      <p>• 부산 1호선 중앙역 7번 출구에서 도보 약 3~5분</p>
+                      <p>• 원빌딩 4층 403-A02호</p>
+                      <p>• 부산세관 및 중앙동 업무지구 인근에 위치하여 접근성이 뛰어납니다.</p>
                     </div>
                   </div>
                 </div>
@@ -6119,7 +6137,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
 
             <div className="h-[500px] lg:h-auto min-h-[400px] rounded-[48px] overflow-hidden shadow-2xl border-8 border-white">
               <iframe 
-                src="https://maps.google.com/maps?q=부산광역시%20사상구%20엄궁남로%2024,%20102동%203층%20302호&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=부산광역시%20중구%20해관로%2064&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

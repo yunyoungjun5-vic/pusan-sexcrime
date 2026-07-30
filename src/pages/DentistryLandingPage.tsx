@@ -605,7 +605,7 @@ const DentistryLandingPage: React.FC = () => {
               <ul className="space-y-4 text-sm font-bold text-slate-500">
                 <li className="flex items-start gap-3">
                   <MapPin className="text-emerald-500 w-5 h-5 shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">중앙동역 2번 출구 오창빌딩 10층</span>
+                  <span className="leading-relaxed">부산광역시 중구 해관로 64, 4층 403-A02호 (중앙동4가, 원빌딩)</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <PhoneCall className="text-emerald-500 w-5 h-5 shrink-0" />
