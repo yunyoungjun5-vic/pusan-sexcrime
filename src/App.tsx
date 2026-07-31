@@ -6093,9 +6093,9 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                       <span>🚇</span> 지하철 이용
                     </p>
                     <div className="text-sm text-slate-600 leading-relaxed font-medium space-y-1 pl-6">
-                      <p>• 부산 1호선 중앙역 하차</p>
-                      <p>• 7번 출구에서 도보 약 3~5분</p>
-                      <p>• 원빌딩 4층 403-A02호로 방문해 주세요.</p>
+                      <p>• 부산도시철도 1호선 중앙역</p>
+                      <p>• 13번 출구에서 도보 약 2~3분</p>
+                      <p>• 출구에서 해관로 방향으로 직진하시면 원빌딩 4층 403-A02호에 위치해 있습니다.</p>
                     </div>
                   </div>
 
@@ -6105,7 +6105,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                       <span>🚌</span> 버스 이용
                     </p>
                     <p className="text-sm text-slate-600 leading-relaxed font-medium pl-6">
-                      중앙역, 부산세관, 중앙동 인근 버스정류장에서 하차 후 도보 약 3~5분 거리에 위치해 있습니다.
+                      중앙역, 중앙동, 부산세관 정류장에서 하차 후 도보 약 3분
                     </p>
                   </div>
 
@@ -6116,19 +6116,7 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
                     </p>
                     <div className="text-sm text-slate-600 leading-relaxed font-medium space-y-1.5 pl-6">
                       <p>• 내비게이션에 '부산광역시 중구 해관로 64' 또는 '원빌딩'을 검색해 주세요.</p>
-                      <p>• 건물 인근 공영주차장 및 민영주차장을 이용하실 수 있습니다. 특히 부산우체국 뒤 공영주차장(해관로 63-1)이 가까워 이용이 편리합니다.</p>
-                    </div>
-                  </div>
-
-                  {/* 찾아오시는 위치 요약 */}
-                  <div className="p-6 rounded-2xl border border-emerald-100 bg-emerald-50/70 shadow-sm space-y-2">
-                    <p className="font-bold text-emerald-950 flex items-center gap-2 text-base">
-                      <span>📍</span> 찾아오시는 위치
-                    </p>
-                    <div className="text-sm text-emerald-900 leading-relaxed font-medium space-y-1 pl-6">
-                      <p>• 부산 1호선 중앙역 7번 출구에서 도보 약 3~5분</p>
-                      <p>• 원빌딩 4층 403-A02호</p>
-                      <p>• 부산세관 및 중앙동 업무지구 인근에 위치하여 접근성이 뛰어납니다.</p>
+                      <p>• 건물 인근 공영주차장 및 민영주차장을 이용하실 수 있습니다.</p>
                     </div>
                   </div>
                 </div>
