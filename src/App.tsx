@@ -54,6 +54,7 @@ import PartnersPage from './pages/PartnersPage';
 import MediaAppearancePage from './pages/MediaAppearancePage';
 import RemoteProgramPage from './pages/RemoteProgramPage';
 import DentistryLandingPage from './pages/DentistryLandingPage';
+import NoticePopupModal from './components/NoticePopupModal';
 
 // --- Types ---
 interface NavItem {
@@ -9276,6 +9277,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
+      <NoticePopupModal />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <div className="flex-grow">
