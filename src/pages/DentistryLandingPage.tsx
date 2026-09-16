@@ -620,7 +620,7 @@ const DentistryLandingPage: React.FC = () => {
           </div>
 
           <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-bold">
-            <p>© 2026 부산성범죄심리상담치료센터. All rights reserved.</p>
+            <p>© 부산성범죄심리상담치료센터. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-emerald-600">이용약관</a>
               <a href="#" className="hover:text-emerald-600">개인정보처리방침</a>

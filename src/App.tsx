@@ -940,7 +940,7 @@ const Footer = () => (
           <a href="#" className="hover:text-white">Cookie Policy</a>
         </div>
         <p className="text-slate-400 text-xs font-bold">
-          © 2026 부산성범죄심리상담치료센터. All rights reserved.
+          © 부산성범죄심리상담치료센터. All rights reserved.
         </p>
       </div>
     </div>

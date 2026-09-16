@@ -14,7 +14,7 @@ export const POPUP_CONFIG = {
   POPUP_ENABLED: true,
 
   // 2. 팝업에 표시할 이미지 URL (외부 클라우드 / CDN 주소)
-  POPUP_IMAGE_URL: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1788066880/ChatGPT_Image_2026%EB%85%84_8%EC%9B%94_30%EC%9D%BC_%EC%98%A4%ED%9B%84_02_14_30_wqb114.png",
+  POPUP_IMAGE_URL: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1789546171/ChatGPT_Image_2026%EB%85%84_9%EC%9B%94_16%EC%9D%BC_%EC%98%A4%ED%9B%84_05_08_55_fjzbad.png",
 
   // 3. 팝업 이미지 클릭 시 이동할 URL (비워두면 클릭 시 동작하지 않음)
   POPUP_IMAGE_LINK: "",
