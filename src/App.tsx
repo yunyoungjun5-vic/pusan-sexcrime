@@ -6170,15 +6170,9 @@ const AboutPage = ({ title, slug }: { title: string; slug: string }) => {
               ))}
             </div>
 
-            {/* Row 4: 3 experts */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10">
+            {/* Row 4: 2 experts */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto gap-8 sm:gap-10">
               {[
-                { 
-                  name: "이희철 교수", 
-                  role: "심리학 박사 / 임상심리 전문가", 
-                  image: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1779201660/이희철_교수_1_lvwzev.png",
-                  desc: "성범죄 가해자 인지왜곡 교정 및 상담 프로그램 연구."
-                },
                 { 
                   name: "유보경 선생님", 
                   role: "상담심리 전문가 / 성인지 교육 강사", 
