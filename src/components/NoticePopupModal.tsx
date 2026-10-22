@@ -23,7 +23,7 @@ export const POPUP_CONFIG = {
 
   // 2차 팝업 (대표원장 방송·강연 아카이브) 활성화 여부 및 이미지 URL
   POPUP_2_ENABLED: true,
-  POPUP_2_IMAGE_URL: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1792029306/%EC%9E%AC%EB%B2%94%EB%B0%A9%EC%A7%80_%EA%B5%90%EC%9C%A1_%EA%B0%95%EC%A1%B0_%ED%8F%AC%EC%8A%A4%ED%84%B0_vqekac.png",
+  POPUP_2_IMAGE_URL: "https://res.cloudinary.com/dxjz9ksjg/image/upload/v1792067983/%EC%A3%BC%EC%9A%94_%EB%B0%A9%EC%86%A1_%EC%96%B8%EB%A1%A0_%EA%B0%95%EC%A1%B0_%EC%83%81%EB%8B%B4%EC%84%BC%ED%84%B0_%ED%8F%AC%EC%8A%A4%ED%84%B0_e6ln84.png",
   POPUP_2_BUTTON_TEXT: "방송 출연 · 강연 기록 보기",
   POPUP_2_BUTTON_URL: "/media/appearance", // 방송 출연·강연 기록 보기 클릭 시 이동 경로
 
